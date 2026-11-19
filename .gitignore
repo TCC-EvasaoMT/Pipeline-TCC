@@ -1,0 +1,10 @@
+# Credenciais
+.env
+
+# Resultados do SEDAP+ (confidenciais, mesmo agregados) e SQL gerado
+dados/
+
+# Python
+.venv/
+__pycache__/
+*.pyc

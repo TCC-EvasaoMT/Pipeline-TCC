@@ -1,0 +1,147 @@
+prioridade;grupo_fator;fator;variavel;codigo_categoria;categoria;ordem_categoria;variavel_origem
+1;Demográfico;Sexo;TP_SEXO;1;Feminino;1;SUP_ALUNO.TP_SEXO
+1;Demográfico;Sexo;TP_SEXO;2;Masculino;2;SUP_ALUNO.TP_SEXO
+1;Demográfico;Cor/raça;TP_COR_RACA;1;Branca;1;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;2;Preta;2;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;3;Parda;3;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;4;Amarela;4;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;5;Indígena;5;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;0;Não declarada;6;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Cor/raça;TP_COR_RACA;9;Não informado;7;SUP_ALUNO.TP_COR_RACA
+1;Demográfico;Faixa etária;FAIXA_ETARIA;ATE_19;Até 19 anos;1;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Faixa etária;FAIXA_ETARIA;20_24;20 a 24 anos;2;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Faixa etária;FAIXA_ETARIA;25_29;25 a 29 anos;3;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Faixa etária;FAIXA_ETARIA;30_39;30 a 39 anos;4;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Faixa etária;FAIXA_ETARIA;40_MAIS;40 anos ou mais;5;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Faixa etária;FAIXA_ETARIA;;Não informado;6;SUP_ALUNO.NU_IDADE (2019) / SUP_ALUNO.DT_NASCIMENTO (2020+)
+1;Demográfico;Pessoa com deficiência, transtorno global do desenvolvimento ou altas habilidades;IN_DEFICIENCIA;1;Sim;1;SUP_ALUNO.IN_DEFICIENCIA
+1;Demográfico;Pessoa com deficiência, transtorno global do desenvolvimento ou altas habilidades;IN_DEFICIENCIA;0;Não;2;SUP_ALUNO.IN_DEFICIENCIA
+1;Demográfico;Pessoa com deficiência, transtorno global do desenvolvimento ou altas habilidades;IN_DEFICIENCIA;9;Não informado;3;SUP_ALUNO.IN_DEFICIENCIA
+1;Demográfico;Naturalidade;NATURALIDADE;MT;Nascido em MT;1;SUP_ALUNO.CO_UF_NASCIMENTO
+1;Demográfico;Naturalidade;NATURALIDADE;OUTRA_UF;Outra UF;2;SUP_ALUNO.CO_UF_NASCIMENTO
+1;Demográfico;Naturalidade;NATURALIDADE;;Exterior/não informado;3;SUP_ALUNO.CO_UF_NASCIMENTO
+1;Trajetória escolar;Escola do ensino médio;TP_ESCOLA_CONCLUSAO_ENS_MEDIO;1;Pública;1;SUP_ALUNO.TP_ESCOLA_CONCLUSAO_ENS_MEDIO
+1;Trajetória escolar;Escola do ensino médio;TP_ESCOLA_CONCLUSAO_ENS_MEDIO;2;Privada;2;SUP_ALUNO.TP_ESCOLA_CONCLUSAO_ENS_MEDIO
+1;Trajetória escolar;Escola do ensino médio;TP_ESCOLA_CONCLUSAO_ENS_MEDIO;9;Não informado;3;SUP_ALUNO.TP_ESCOLA_CONCLUSAO_ENS_MEDIO
+1;Ingresso;Entrou por reserva de vagas (cotas);IN_RESERVA_VAGAS;1;Sim;1;SUP_ALUNO.IN_RESERVA_VAGAS
+1;Ingresso;Entrou por reserva de vagas (cotas);IN_RESERVA_VAGAS;0;Não;2;SUP_ALUNO.IN_RESERVA_VAGAS
+1;Ingresso;Entrou pelo Enem;IN_INGRESSO_ENEM;1;Sim;1;SUP_ALUNO.IN_INGRESSO_ENEM
+1;Ingresso;Entrou pelo Enem;IN_INGRESSO_ENEM;0;Não;2;SUP_ALUNO.IN_INGRESSO_ENEM
+1;Ingresso;Entrou por vestibular;IN_INGRESSO_VESTIBULAR;1;Sim;1;SUP_ALUNO.IN_INGRESSO_VESTIBULAR
+1;Ingresso;Entrou por vestibular;IN_INGRESSO_VESTIBULAR;0;Não;2;SUP_ALUNO.IN_INGRESSO_VESTIBULAR
+1;Permanência;Recebe apoio social;IN_APOIO_SOCIAL;1;Sim;1;SUP_ALUNO.IN_APOIO_SOCIAL
+1;Permanência;Recebe apoio social;IN_APOIO_SOCIAL;0;Não;2;SUP_ALUNO.IN_APOIO_SOCIAL
+1;Engajamento;Participa de atividade extracurricular;IN_ATIVIDADE_EXTRACURRICULAR;1;Sim;1;SUP_ALUNO.IN_ATIVIDADE_EXTRACURRICULAR
+1;Engajamento;Participa de atividade extracurricular;IN_ATIVIDADE_EXTRACURRICULAR;0;Não;2;SUP_ALUNO.IN_ATIVIDADE_EXTRACURRICULAR
+1;Oferta;Turno do aluno;TP_TURNO;1;Matutino;1;SUP_ALUNO.TP_TURNO
+1;Oferta;Turno do aluno;TP_TURNO;2;Vespertino;2;SUP_ALUNO.TP_TURNO
+1;Oferta;Turno do aluno;TP_TURNO;3;Noturno;3;SUP_ALUNO.TP_TURNO
+1;Oferta;Turno do aluno;TP_TURNO;4;Integral;4;SUP_ALUNO.TP_TURNO
+1;Oferta;Turno do aluno;TP_TURNO;;Não se aplica (EaD);5;SUP_ALUNO.TP_TURNO
+2;Ingresso;Tipo de cota: étnica;IN_RESERVA_ETNICO;1;Sim;1;SUP_ALUNO.IN_RESERVA_ETNICO
+2;Ingresso;Tipo de cota: étnica;IN_RESERVA_ETNICO;0;Não (tem outra cota);2;SUP_ALUNO.IN_RESERVA_ETNICO
+2;Ingresso;Tipo de cota: étnica;IN_RESERVA_ETNICO;;Não tem nenhuma cota;3;SUP_ALUNO.IN_RESERVA_ETNICO
+2;Ingresso;Tipo de cota: pessoa com deficiência;IN_RESERVA_DEFICIENCIA;1;Sim;1;SUP_ALUNO.IN_RESERVA_DEFICIENCIA
+2;Ingresso;Tipo de cota: pessoa com deficiência;IN_RESERVA_DEFICIENCIA;0;Não (tem outra cota);2;SUP_ALUNO.IN_RESERVA_DEFICIENCIA
+2;Ingresso;Tipo de cota: pessoa com deficiência;IN_RESERVA_DEFICIENCIA;;Não tem nenhuma cota;3;SUP_ALUNO.IN_RESERVA_DEFICIENCIA
+2;Ingresso;Tipo de cota: escola pública;IN_RESERVA_ENSINO_PUBLICO;1;Sim;1;SUP_ALUNO.IN_RESERVA_ENSINO_PUBLICO
+2;Ingresso;Tipo de cota: escola pública;IN_RESERVA_ENSINO_PUBLICO;0;Não (tem outra cota);2;SUP_ALUNO.IN_RESERVA_ENSINO_PUBLICO
+2;Ingresso;Tipo de cota: escola pública;IN_RESERVA_ENSINO_PUBLICO;;Não tem nenhuma cota;3;SUP_ALUNO.IN_RESERVA_ENSINO_PUBLICO
+2;Ingresso;Tipo de cota: renda familiar;IN_RESERVA_RENDA_FAMILIAR;1;Sim;1;SUP_ALUNO.IN_RESERVA_RENDA_FAMILIAR
+2;Ingresso;Tipo de cota: renda familiar;IN_RESERVA_RENDA_FAMILIAR;0;Não (tem outra cota);2;SUP_ALUNO.IN_RESERVA_RENDA_FAMILIAR
+2;Ingresso;Tipo de cota: renda familiar;IN_RESERVA_RENDA_FAMILIAR;;Não tem nenhuma cota;3;SUP_ALUNO.IN_RESERVA_RENDA_FAMILIAR
+2;Ingresso;Tipo de cota: outra;IN_RESERVA_OUTRA;1;Sim;1;SUP_ALUNO.IN_RESERVA_OUTRA
+2;Ingresso;Tipo de cota: outra;IN_RESERVA_OUTRA;0;Não (tem outra cota);2;SUP_ALUNO.IN_RESERVA_OUTRA
+2;Ingresso;Tipo de cota: outra;IN_RESERVA_OUTRA;;Não tem nenhuma cota;3;SUP_ALUNO.IN_RESERVA_OUTRA
+2;Ingresso;Forma de ingresso: avaliação seriada;IN_INGRESSO_AVALIACAO_SERIADA;1;Sim;1;SUP_ALUNO.IN_INGRESSO_AVALIACAO_SERIADA
+2;Ingresso;Forma de ingresso: avaliação seriada;IN_INGRESSO_AVALIACAO_SERIADA;0;Não;2;SUP_ALUNO.IN_INGRESSO_AVALIACAO_SERIADA
+2;Ingresso;Forma de ingresso: avaliação seriada;IN_INGRESSO_AVALIACAO_SERIADA;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_AVALIACAO_SERIADA
+2;Ingresso;Forma de ingresso: seleção simplificada;IN_INGRESSO_SELECAO_SIMPLIFICA;1;Sim;1;SUP_ALUNO.IN_INGRESSO_SELECAO_SIMPLIFICA
+2;Ingresso;Forma de ingresso: seleção simplificada;IN_INGRESSO_SELECAO_SIMPLIFICA;0;Não;2;SUP_ALUNO.IN_INGRESSO_SELECAO_SIMPLIFICA
+2;Ingresso;Forma de ingresso: seleção simplificada;IN_INGRESSO_SELECAO_SIMPLIFICA;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_SELECAO_SIMPLIFICA
+2;Ingresso;Forma de ingresso: outro tipo de seleção;IN_INGRESSO_OUTRO_TIPO_SELECAO;1;Sim;1;SUP_ALUNO.IN_INGRESSO_OUTRO_TIPO_SELECAO
+2;Ingresso;Forma de ingresso: outro tipo de seleção;IN_INGRESSO_OUTRO_TIPO_SELECAO;0;Não;2;SUP_ALUNO.IN_INGRESSO_OUTRO_TIPO_SELECAO
+2;Ingresso;Forma de ingresso: outro tipo de seleção;IN_INGRESSO_OUTRO_TIPO_SELECAO;;Sem dado (variável só tem dado até 2013);3;SUP_ALUNO.IN_INGRESSO_OUTRO_TIPO_SELECAO
+2;Ingresso;Forma de ingresso: vaga remanescente;IN_INGRESSO_VAGA_REMANESC;1;Sim;1;SUP_ALUNO.IN_INGRESSO_VAGA_REMANESC
+2;Ingresso;Forma de ingresso: vaga remanescente;IN_INGRESSO_VAGA_REMANESC;0;Não;2;SUP_ALUNO.IN_INGRESSO_VAGA_REMANESC
+2;Ingresso;Forma de ingresso: vaga remanescente;IN_INGRESSO_VAGA_REMANESC;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_VAGA_REMANESC
+2;Ingresso;Forma de ingresso: vaga de programa especial;IN_INGRESSO_VAGA_PROG_ESPECIAL;1;Sim;1;SUP_ALUNO.IN_INGRESSO_VAGA_PROG_ESPECIAL
+2;Ingresso;Forma de ingresso: vaga de programa especial;IN_INGRESSO_VAGA_PROG_ESPECIAL;0;Não;2;SUP_ALUNO.IN_INGRESSO_VAGA_PROG_ESPECIAL
+2;Ingresso;Forma de ingresso: vaga de programa especial;IN_INGRESSO_VAGA_PROG_ESPECIAL;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_VAGA_PROG_ESPECIAL
+2;Ingresso;Forma de ingresso: transferência ex officio;IN_INGRESSO_TRANSF_EXOFFICIO;1;Sim;1;SUP_ALUNO.IN_INGRESSO_TRANSF_EXOFFICIO
+2;Ingresso;Forma de ingresso: transferência ex officio;IN_INGRESSO_TRANSF_EXOFFICIO;0;Não;2;SUP_ALUNO.IN_INGRESSO_TRANSF_EXOFFICIO
+2;Ingresso;Forma de ingresso: transferência ex officio;IN_INGRESSO_TRANSF_EXOFFICIO;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_TRANSF_EXOFFICIO
+2;Ingresso;Forma de ingresso: decisão judicial;IN_INGRESSO_DECISAO_JUDICIAL;1;Sim;1;SUP_ALUNO.IN_INGRESSO_DECISAO_JUDICIAL
+2;Ingresso;Forma de ingresso: decisão judicial;IN_INGRESSO_DECISAO_JUDICIAL;0;Não;2;SUP_ALUNO.IN_INGRESSO_DECISAO_JUDICIAL
+2;Ingresso;Forma de ingresso: decisão judicial;IN_INGRESSO_DECISAO_JUDICIAL;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_DECISAO_JUDICIAL
+2;Ingresso;Forma de ingresso: convênio PEC-G;IN_INGRESSO_CONVENIO_PECG;1;Sim;1;SUP_ALUNO.IN_INGRESSO_CONVENIO_PECG
+2;Ingresso;Forma de ingresso: convênio PEC-G;IN_INGRESSO_CONVENIO_PECG;0;Não;2;SUP_ALUNO.IN_INGRESSO_CONVENIO_PECG
+2;Ingresso;Forma de ingresso: convênio PEC-G;IN_INGRESSO_CONVENIO_PECG;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_CONVENIO_PECG
+2;Ingresso;Forma de ingresso: egresso de curso interdisciplinar;IN_INGRESSO_EGRESSO;1;Sim;1;SUP_ALUNO.IN_INGRESSO_EGRESSO
+2;Ingresso;Forma de ingresso: egresso de curso interdisciplinar;IN_INGRESSO_EGRESSO;0;Não;2;SUP_ALUNO.IN_INGRESSO_EGRESSO
+2;Ingresso;Forma de ingresso: egresso de curso interdisciplinar;IN_INGRESSO_EGRESSO;;Sem dado;3;SUP_ALUNO.IN_INGRESSO_EGRESSO
+2;Ingresso;Forma de ingresso: outra forma;IN_INGRESSO_OUTRA_FORMA;1;Sim;1;SUP_ALUNO.IN_INGRESSO_OUTRA_FORMA
+2;Ingresso;Forma de ingresso: outra forma;IN_INGRESSO_OUTRA_FORMA;0;Não;2;SUP_ALUNO.IN_INGRESSO_OUTRA_FORMA
+2;Ingresso;Forma de ingresso: outra forma;IN_INGRESSO_OUTRA_FORMA;;Sem dado (variável só tem dado até 2013);3;SUP_ALUNO.IN_INGRESSO_OUTRA_FORMA
+2;Permanência;Tipo de apoio: alimentação;IN_APOIO_ALIMENTACAO;1;Sim;1;SUP_ALUNO.IN_APOIO_ALIMENTACAO
+2;Permanência;Tipo de apoio: alimentação;IN_APOIO_ALIMENTACAO;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_ALIMENTACAO
+2;Permanência;Tipo de apoio: alimentação;IN_APOIO_ALIMENTACAO;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_ALIMENTACAO
+2;Permanência;Tipo de apoio: moradia;IN_APOIO_MORADIA;1;Sim;1;SUP_ALUNO.IN_APOIO_MORADIA
+2;Permanência;Tipo de apoio: moradia;IN_APOIO_MORADIA;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_MORADIA
+2;Permanência;Tipo de apoio: moradia;IN_APOIO_MORADIA;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_MORADIA
+2;Permanência;Tipo de apoio: transporte;IN_APOIO_TRANSPORTE;1;Sim;1;SUP_ALUNO.IN_APOIO_TRANSPORTE
+2;Permanência;Tipo de apoio: transporte;IN_APOIO_TRANSPORTE;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_TRANSPORTE
+2;Permanência;Tipo de apoio: transporte;IN_APOIO_TRANSPORTE;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_TRANSPORTE
+2;Permanência;Tipo de apoio: bolsa permanência;IN_APOIO_BOLSA_PERMANENCIA;1;Sim;1;SUP_ALUNO.IN_APOIO_BOLSA_PERMANENCIA
+2;Permanência;Tipo de apoio: bolsa permanência;IN_APOIO_BOLSA_PERMANENCIA;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_BOLSA_PERMANENCIA
+2;Permanência;Tipo de apoio: bolsa permanência;IN_APOIO_BOLSA_PERMANENCIA;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_BOLSA_PERMANENCIA
+2;Permanência;Tipo de apoio: bolsa trabalho;IN_APOIO_BOLSA_TRABALHO;1;Sim;1;SUP_ALUNO.IN_APOIO_BOLSA_TRABALHO
+2;Permanência;Tipo de apoio: bolsa trabalho;IN_APOIO_BOLSA_TRABALHO;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_BOLSA_TRABALHO
+2;Permanência;Tipo de apoio: bolsa trabalho;IN_APOIO_BOLSA_TRABALHO;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_BOLSA_TRABALHO
+2;Permanência;Tipo de apoio: material didático;IN_APOIO_MATERIAL_DIDATICO;1;Sim;1;SUP_ALUNO.IN_APOIO_MATERIAL_DIDATICO
+2;Permanência;Tipo de apoio: material didático;IN_APOIO_MATERIAL_DIDATICO;0;Não (recebe outro apoio);2;SUP_ALUNO.IN_APOIO_MATERIAL_DIDATICO
+2;Permanência;Tipo de apoio: material didático;IN_APOIO_MATERIAL_DIDATICO;;Não recebe nenhum apoio social;3;SUP_ALUNO.IN_APOIO_MATERIAL_DIDATICO
+2;Permanência;Financiamento estudantil;IN_FINANCIAMENTO_ESTUDANTIL;1;Sim;1;SUP_ALUNO.IN_FINANCIAMENTO_ESTUDANTIL
+2;Permanência;Financiamento estudantil;IN_FINANCIAMENTO_ESTUDANTIL;0;Não;2;SUP_ALUNO.IN_FINANCIAMENTO_ESTUDANTIL
+2;Permanência;Financiamento estudantil;IN_FINANCIAMENTO_ESTUDANTIL;;Não se aplica (curso gratuito, IES federal ou universidade estadual);3;SUP_ALUNO.IN_FINANCIAMENTO_ESTUDANTIL
+2;Engajamento;Participa de estágio;IN_COMPLEMENTAR_ESTAGIO;1;Sim;1;SUP_ALUNO.IN_COMPLEMENTAR_ESTAGIO
+2;Engajamento;Participa de estágio;IN_COMPLEMENTAR_ESTAGIO;0;Não (faz outra atividade);2;SUP_ALUNO.IN_COMPLEMENTAR_ESTAGIO
+2;Engajamento;Participa de estágio;IN_COMPLEMENTAR_ESTAGIO;;Não faz nenhuma atividade extracurricular;3;SUP_ALUNO.IN_COMPLEMENTAR_ESTAGIO
+2;Engajamento;Participa de extensão;IN_COMPLEMENTAR_EXTENSAO;1;Sim;1;SUP_ALUNO.IN_COMPLEMENTAR_EXTENSAO
+2;Engajamento;Participa de extensão;IN_COMPLEMENTAR_EXTENSAO;0;Não (faz outra atividade);2;SUP_ALUNO.IN_COMPLEMENTAR_EXTENSAO
+2;Engajamento;Participa de extensão;IN_COMPLEMENTAR_EXTENSAO;;Não faz nenhuma atividade extracurricular;3;SUP_ALUNO.IN_COMPLEMENTAR_EXTENSAO
+2;Engajamento;Participa de monitoria;IN_COMPLEMENTAR_MONITORIA;1;Sim;1;SUP_ALUNO.IN_COMPLEMENTAR_MONITORIA
+2;Engajamento;Participa de monitoria;IN_COMPLEMENTAR_MONITORIA;0;Não (faz outra atividade);2;SUP_ALUNO.IN_COMPLEMENTAR_MONITORIA
+2;Engajamento;Participa de monitoria;IN_COMPLEMENTAR_MONITORIA;;Não faz nenhuma atividade extracurricular;3;SUP_ALUNO.IN_COMPLEMENTAR_MONITORIA
+2;Engajamento;Participa de pesquisa;IN_COMPLEMENTAR_PESQUISA;1;Sim;1;SUP_ALUNO.IN_COMPLEMENTAR_PESQUISA
+2;Engajamento;Participa de pesquisa;IN_COMPLEMENTAR_PESQUISA;0;Não (faz outra atividade);2;SUP_ALUNO.IN_COMPLEMENTAR_PESQUISA
+2;Engajamento;Participa de pesquisa;IN_COMPLEMENTAR_PESQUISA;;Não faz nenhuma atividade extracurricular;3;SUP_ALUNO.IN_COMPLEMENTAR_PESQUISA
+2;Engajamento;Bolsa de estágio;IN_BOLSA_ESTAGIO;1;Sim;1;SUP_ALUNO.IN_BOLSA_ESTAGIO
+2;Engajamento;Bolsa de estágio;IN_BOLSA_ESTAGIO;0;Não (faz a atividade sem bolsa);2;SUP_ALUNO.IN_BOLSA_ESTAGIO
+2;Engajamento;Bolsa de estágio;IN_BOLSA_ESTAGIO;;Não faz a atividade;3;SUP_ALUNO.IN_BOLSA_ESTAGIO
+2;Engajamento;Bolsa de extensão;IN_BOLSA_EXTENSAO;1;Sim;1;SUP_ALUNO.IN_BOLSA_EXTENSAO
+2;Engajamento;Bolsa de extensão;IN_BOLSA_EXTENSAO;0;Não (faz a atividade sem bolsa);2;SUP_ALUNO.IN_BOLSA_EXTENSAO
+2;Engajamento;Bolsa de extensão;IN_BOLSA_EXTENSAO;;Não faz a atividade;3;SUP_ALUNO.IN_BOLSA_EXTENSAO
+2;Engajamento;Bolsa de monitoria;IN_BOLSA_MONITORIA;1;Sim;1;SUP_ALUNO.IN_BOLSA_MONITORIA
+2;Engajamento;Bolsa de monitoria;IN_BOLSA_MONITORIA;0;Não (faz a atividade sem bolsa);2;SUP_ALUNO.IN_BOLSA_MONITORIA
+2;Engajamento;Bolsa de monitoria;IN_BOLSA_MONITORIA;;Não faz a atividade;3;SUP_ALUNO.IN_BOLSA_MONITORIA
+2;Engajamento;Bolsa de pesquisa;IN_BOLSA_PESQUISA;1;Sim;1;SUP_ALUNO.IN_BOLSA_PESQUISA
+2;Engajamento;Bolsa de pesquisa;IN_BOLSA_PESQUISA;0;Não (faz a atividade sem bolsa);2;SUP_ALUNO.IN_BOLSA_PESQUISA
+2;Engajamento;Bolsa de pesquisa;IN_BOLSA_PESQUISA;;Não faz a atividade;3;SUP_ALUNO.IN_BOLSA_PESQUISA
+2;Engajamento;Mobilidade acadêmica;IN_MOBILIDADE_ACADEMICA;1;Sim;1;SUP_ALUNO.IN_MOBILIDADE_ACADEMICA
+2;Engajamento;Mobilidade acadêmica;IN_MOBILIDADE_ACADEMICA;0;Não;2;SUP_ALUNO.IN_MOBILIDADE_ACADEMICA
+2;Engajamento;Mobilidade acadêmica;IN_MOBILIDADE_ACADEMICA;;Não se aplica (aluno de universidade federal);3;SUP_ALUNO.IN_MOBILIDADE_ACADEMICA
+2;Oferta;PARFOR;IN_ALUNO_PARFOR;1;Sim;1;SUP_ALUNO.IN_ALUNO_PARFOR
+2;Oferta;PARFOR;IN_ALUNO_PARFOR;0;Não;2;SUP_ALUNO.IN_ALUNO_PARFOR
+2;Oferta;PARFOR;IN_ALUNO_PARFOR;;Não se aplica (curso que não é licenciatura);3;SUP_ALUNO.IN_ALUNO_PARFOR
+2;Oferta;Formação pedagógica;IN_FORMACAO_PEDAGOGICA;1;Sim;1;SUP_ALUNO.IN_FORMACAO_PEDAGOGICA
+2;Oferta;Formação pedagógica;IN_FORMACAO_PEDAGOGICA;0;Não;2;SUP_ALUNO.IN_FORMACAO_PEDAGOGICA
+2;Oferta;Formação pedagógica;IN_FORMACAO_PEDAGOGICA;;Não se aplica (curso que não é licenciatura) ou sem dado (2019);3;SUP_ALUNO.IN_FORMACAO_PEDAGOGICA
+2;Oferta;Segunda licenciatura;IN_SEGUNDA_LICENCIATURA;1;Sim;1;SUP_ALUNO.IN_SEGUNDA_LICENCIATURA
+2;Oferta;Segunda licenciatura;IN_SEGUNDA_LICENCIATURA;0;Não;2;SUP_ALUNO.IN_SEGUNDA_LICENCIATURA
+2;Oferta;Segunda licenciatura;IN_SEGUNDA_LICENCIATURA;;Não se aplica (curso que não é licenciatura) ou sem dado (2019);3;SUP_ALUNO.IN_SEGUNDA_LICENCIATURA
+2;Trajetória no curso;Carga horária já cumprida;CARGA_HORARIA_CUMPRIDA;0_25;0 a 25%;1;SUP_ALUNO.QT_CARGA_HORARIA_INTEG / SUP_ALUNO.QT_CARGA_HORARIA_TOTAL
+2;Trajetória no curso;Carga horária já cumprida;CARGA_HORARIA_CUMPRIDA;25_50;25 a 50%;2;SUP_ALUNO.QT_CARGA_HORARIA_INTEG / SUP_ALUNO.QT_CARGA_HORARIA_TOTAL
+2;Trajetória no curso;Carga horária já cumprida;CARGA_HORARIA_CUMPRIDA;50_75;50 a 75%;3;SUP_ALUNO.QT_CARGA_HORARIA_INTEG / SUP_ALUNO.QT_CARGA_HORARIA_TOTAL
+2;Trajetória no curso;Carga horária já cumprida;CARGA_HORARIA_CUMPRIDA;75_MAIS;75% ou mais;4;SUP_ALUNO.QT_CARGA_HORARIA_INTEG / SUP_ALUNO.QT_CARGA_HORARIA_TOTAL
+2;Trajetória no curso;Carga horária já cumprida;CARGA_HORARIA_CUMPRIDA;;Não informado;5;SUP_ALUNO.QT_CARGA_HORARIA_INTEG / SUP_ALUNO.QT_CARGA_HORARIA_TOTAL
