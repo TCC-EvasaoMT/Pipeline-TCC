@@ -1,0 +1,398 @@
+CO_CINE_AREA_GERAL;NO_CINE_AREA_GERAL;CO_CINE_AREA_ESPECIFICA;NO_CINE_AREA_ESPECIFICA;CO_CINE_AREA_DETALHADA;NO_CINE_AREA_DETALHADA;CO_CINE_ROTULO;NO_CINE_ROTULO;Data de inclusão;Alteração;Data de alteração
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A01;ABI Educação;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A02;ABI Artes e humanidades;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A03;ABI Ciências sociais, comunicação e informação;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A04;ABI Negócios, administração e direito;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A05;ABI Ciências naturais, matemática e estatística;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A06;ABI Computação e Tecnologias da Informação e Comunicação (TIC);2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A07;ABI Engenharia, produção e construção;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A08;ABI Agricultura, silvicultura, pesca e veterinária;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A09;ABI Saúde e bem-estar;2019-05-30;;
+00;Programas básicos;001;Programas básicos;0011;Programas básicos;0011A10;ABI Serviços;2019-05-30;;
+01;Educação;011;Educação;0111;Ciência da educação;0111C01;Ciência da educação;2019-05-30;;
+01;Educação;011;Educação;0111;Ciência da educação;0111P01;Processos escolares;2019-05-30;;
+01;Educação;011;Educação;0111;Ciência da educação;0111P02;Psicopedagogia;2019-05-30;;
+01;Educação;011;Educação;0112;Formação de professores de educação infantil;0112E01;Educação infantil formação de professor;2019-05-30;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113E01;Educação do campo formação de professor;2019-05-30;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113E02;Educação especial formação de professor;2019-05-30;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113E03;Educação indígena formação de professor;2019-05-30;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113E04;Educação bilíngue de surdos formação de professor;2026-07-29;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113E05;Educação quilombola formação de professor;2026-07-29;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113F01;Formação pedagógica de professor para a educação básica;2019-05-30;;
+01;Educação;011;Educação;0113;Formação de professores sem áreas específicas;0113P01;Pedagogia;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114A01;Artes formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114A02;Artes visuais formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114B01;Biologia formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114C01;Ciências agrárias formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114C02;Ciências naturais formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114C03;Ciências sociais formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114C04;Cinema e audiovisual formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114C05;Computação formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114D01;Dança formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E01;Economia doméstica formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E02;Educação do campo em áreas de conhecimento da educação básica formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E03;Educação física formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E04;Educação indígena em áreas de conhecimento da educação básica formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E05;Enfermagem formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E06;Ensino profissionalizante em área específica formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E07;Ensino religioso formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114E08;Estatística formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114F01;Filosofia formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114F02;Física formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114G01;Geografia formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114H01;História formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114M01;Matemática formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114M02;Música formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114P01;Psicologia formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114Q01;Química formação de professor;2019-05-30;;
+01;Educação;011;Educação;0114;Formação de professores em áreas específicas (exceto Letras);0114T01;Teatro formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L01;Letras alemão formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L02;Letras espanhol formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L03;Letras francês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L04;Letras inglês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L05;Letras italiano formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L06;Letras japonês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L07;Letras língua brasileira de sinais formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L08;Letras línguas estrangeiras clássicas formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L09;Letras linguística formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L10;Letras outras línguas estrangeiras modernas formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L11;Letras português alemão formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L12;Letras português espanhol formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L13;Letras português formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L14;Letras português francês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L15;Letras português inglês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L16;Letras português italiano formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L17;Letras português japonês formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L18;Letras português língua brasileira de sinais formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L19;Letras português línguas estrangeiras clássicas formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L20;Letras português outras línguas estrangeiras modernas formação de professor;2019-05-30;;
+01;Educação;011;Educação;0115;Formação de professores de letras;0115L21;Letras tradutor e intérprete formação de professor;2019-05-30;;
+01;Educação;011;Educação;0119;Programas abrangendo educação em processo de definição da classificação;0119P01;Programas abrangendo educação em processo de definição da classificação;;Área detalhada 0199 alterada para 0119 e rótulo 0199P01 alterado para 0119P01.;2024-11-21
+01;Educação;018;Programas interdisciplinares abrangendo educação;0188;Programas interdisciplinares abrangendo educação;0188P01;Programas interdisciplinares abrangendo educação;2019-05-30;;
+01;Educação;019;Programas abrangendo educação em processo de definição da classificação;0199;Programas abrangendo educação em processo de definição da classificação;0199P01;Programas abrangendo educação em processo de definição da classificação;2023-05-03;Exclusão da área específica 019, remanejamento da área detalhada 0199 e do rótulo 0199P01 para a área específica 011.;2024-11-21
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211A01;Animação;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211C01;Cinema e audiovisual;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211C02;Comunicação assistiva;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211D01;Design gráfico;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211F01;Fotografia;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211P01;Produção audiovisual;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211P02;Produção cênica;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211P03;Produção cultural;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211P04;Produção fonográfica;2019-05-30;;
+02;Artes e humanidades;021;Artes;0211;Produção audiovisual, de mídia e cultural;0211P05;Produção multimídia;2019-05-30;;
+02;Artes e humanidades;021;Artes;0212;Moda, design de interiores e desenho industrial;0212D01;Desenho industrial;2019-05-30;;
+02;Artes e humanidades;021;Artes;0212;Moda, design de interiores e desenho industrial;0212D02;Design;2019-05-30;;
+02;Artes e humanidades;021;Artes;0212;Moda, design de interiores e desenho industrial;0212D03;Design de interiores;2019-05-30;;
+02;Artes e humanidades;021;Artes;0212;Moda, design de interiores e desenho industrial;0212D04;Design de produto;2019-05-30;;
+02;Artes e humanidades;021;Artes;0212;Moda, design de interiores e desenho industrial;0212M01;Moda;2019-05-30;;
+02;Artes e humanidades;021;Artes;0213;Belas artes;0213A01;Artes;2019-05-30;;
+02;Artes e humanidades;021;Artes;0213;Belas artes;0213A02;Artes plásticas;2019-05-30;;
+02;Artes e humanidades;021;Artes;0213;Belas artes;0213A03;Artes visuais;2019-05-30;;
+02;Artes e humanidades;021;Artes;0213;Belas artes;0213H01;História da arte;2019-05-30;;
+02;Artes e humanidades;021;Artes;0214;Artesanato;0214F01;Fabricação de instrumentos musicais não industrial;2019-05-30;;
+02;Artes e humanidades;021;Artes;0215;Música e artes cênicas;0215A01;Artes cênicas;2019-05-30;;
+02;Artes e humanidades;021;Artes;0215;Música e artes cênicas;0215D01;Dança;2019-05-30;;
+02;Artes e humanidades;021;Artes;0215;Música e artes cênicas;0215M01;Música;2019-05-30;;
+02;Artes e humanidades;021;Artes;0215;Música e artes cênicas;0215T01;Teatro;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0221;Religião e teologia;0221C01;Ciências da religião;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0221;Religião e teologia;0221T01;Teologia;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0222;História e arqueologia;0222A01;Arqueologia;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0222;História e arqueologia;0222C01;Conservação e restauro;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0222;História e arqueologia;0222H01;História;2019-05-30;;
+02;Artes e humanidades;022;Humanidades (exceto línguas);0223;Filosofia e ética;0223F01;Filosofia;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L01;Letras alemão;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L02;Letras escrita criativa;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L03;Letras espanhol;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L04;Letras francês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L05;Letras inglês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L06;Letras italiano;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L07;Letras japonês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L08;Letras língua brasileira de sinais;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L09;Letras línguas estrangeiras clássicas;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L10;Letras linguística;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L11;Letras outras línguas estrangeiras modernas;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L12;Letras português;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L13;Letras português alemão;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L14;Letras português espanhol;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L15;Letras português francês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L16;Letras português inglês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L17;Letras português italiano;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L18;Letras português japonês;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L19;Letras português língua brasileira de sinais;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L20;Letras português línguas estrangeiras clássicas;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L21;Letras português outras línguas estrangeiras modernas;2019-05-30;;
+02;Artes e humanidades;023;Línguas ;0231;Letras;0231L22;Letras tradutor e intérprete;2019-05-30;;
+02;Artes e humanidades;028;Programas interdisciplinares abrangendo artes e humanidades;0288;Programas interdisciplinares abrangendo artes e humanidades;0288P01;Programas interdisciplinares abrangendo artes e humanidades;2019-05-30;;
+02;Artes e humanidades;029;Programas abrangendo artes e humanidades em processo de definição da classificação;0299;Programas abrangendo artes e humanidades em processo de definição da classificação;0299P01;Programas abrangendo artes e humanidades em processo de definição da classificação;2023-05-03;;
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0311;Economia;0311E01;Economia;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312A01;Antropologia;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312C01;Ciência política;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312C02;Ciências sociais;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312G01;Geografia;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312R01;Relações internacionais;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0312;Ciências sociais e políticas;0312S01;Sociologia;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;031;Ciências sociais e comportamentais;0313;Psicologia;0313P01;Psicologia;2019-05-30;Substituição de Jornalismo por Comunicação no nome da área geral 03.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0321;Comunicação e reportagem;0321C01;Comunicação social;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03, área específica 032 e área detalhada 0321.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0321;Comunicação e reportagem;0321J01;Jornalismo;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03, área específica 032 e área detalhada 0321.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0321;Comunicação e reportagem;0321P01;Produção editorial;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03, área específica 032 e área detalhada 0321.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0321;Comunicação e reportagem;0321R01;Rádio, TV e internet;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03, área específica 032 e área detalhada 0321.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0322;Ciência da informação e museologia;0322A01;Arquivologia;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03 e área específica 032, e alteração do nome da área detalhada de Biblioteconomia, informação e estudos arquivísticos para Ciência da informação e museologia.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0322;Ciência da informação e museologia;0322B01;Biblioteconomia;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03 e área específica 032, e alteração do nome da área detalhada de Biblioteconomia, informação e estudos arquivísticos para Ciência da informação e museologia.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0322;Ciência da informação e museologia;0322G01;Gestão da informação;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03 e área específica 032, e alteração do nome da área detalhada de Biblioteconomia, informação e estudos arquivísticos para Ciência da informação e museologia.;2020-05-05
+03;Ciências sociais, comunicação e informação;032;Comunicação e informação ;0322;Ciência da informação e museologia;0322M01;Museologia;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03 e área específica 032, e alteração do nome da área detalhada de Biblioteconomia, informação e estudos arquivísticos para Ciência da informação e museologia.;2020-05-05
+03;Ciências sociais, comunicação e informação;038;Programas interdisciplinares abrangendo ciências sociais, comunicação e informação;0388;Programas interdisciplinares abrangendo ciências sociais, comunicação e informação;0388P01;Programas interdisciplinares abrangendo ciências sociais, comunicação e informação;2019-05-30;Substituição de Jornalismo por Comunicação nos nomes da área geral 03, área específica 038, área detalhada 0388, e rótulo 0388P01.;2020-05-05
+03;Ciências sociais, comunicação e informação;039;Programas abrangendo ciências sociais, comunicação e informação em processo de definição da classificação;0399;Programas abrangendo ciências sociais, comunicação e informação em processo de definição da classificação;0399P01;Programas abrangendo ciências sociais, comunicação e informação em processo de definição da classificação;2023-05-03;;
+04;Negócios, administração e direito;041;Negócios e administração;0411;Contabilidade e tributação;0411C01;Contabilidade;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0411;Contabilidade e tributação;0411G01;Gestão fiscal e tributária;2020-08-21;;
+04;Negócios, administração e direito;041;Negócios e administração;0412;Finanças, bancos e seguros;0412G01;Gestão financeira;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0412;Finanças, bancos e seguros;0412S01;Seguros;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413A01;Administração;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413A02;Administração pública;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413C01;Comércio exterior;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413E01;Empreendedorismo;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G01;Gestão da produção;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G02;Gestão da qualidade;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G03;Gestão da saúde;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G04;Gestão de cooperativas;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G05;Gestão de negócios;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G06;Gestão de negócios internacionais;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G07;Gestão de pessoas;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G08;Gestão de serviços;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G09;Gestão do agronegócio;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G10;Gestão estratégica;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G11;Gestão hospitalar;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413G12;Gestão pública;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0413;Gestão e administração;0413L01;Logística;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0414;Marketing e propaganda;0414M01;Marketing;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0414;Marketing e propaganda;0414P01;Publicidade e propaganda;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0414;Marketing e propaganda;0414R01;Relações públicas;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0415;Secretariado e trabalhos de escritório;0415S01;Secretariado;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0416;Gestão comercial;0416G01;Gestão comercial;2019-05-30;;
+04;Negócios, administração e direito;041;Negócios e administração;0416;Gestão comercial;0416N01;Negócios imobiliários;2019-05-30;;
+04;Negócios, administração e direito;042;Direito;0421;Direito;0421D01;Direito;2019-05-30;;
+04;Negócios, administração e direito;042;Direito;0421;Direito;0421M01;Mediação;2023-06-07;;
+04;Negócios, administração e direito;042;Direito;0421;Direito;0421S01;Serviços jurídicos e cartoriais;2020-07-08;;
+04;Negócios, administração e direito;048;Programas interdisciplinares abrangendo negócios, administração e direito;0488;Programas interdisciplinares abrangendo negócios, administração e direito;0488P01;Programas interdisciplinares abrangendo negócios, administração e direito;2019-05-30;;
+04;Negócios, administração e direito;049;Programas abrangendo negócios, administração e direito em processo de definição da classificação;0499;Programas abrangendo negócios, administração e direito em processo de definição da classificação;0499P01;Programas abrangendo negócios, administração e direito em processo de definição da classificação;2023-05-03;;
+05;Ciências naturais, matemática e estatística;051;Ciências biológicas e correlatas;0511;Biologia;0511B01;Biologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;051;Ciências biológicas e correlatas;0512;Bioquímica e biotecnologia;0512B01;Bioquímica;2019-05-30;;
+05;Ciências naturais, matemática e estatística;051;Ciências biológicas e correlatas;0512;Bioquímica e biotecnologia;0512B02;Biotecnologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;051;Ciências biológicas e correlatas;0512;Bioquímica e biotecnologia;0512T01;Toxicologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;052;Meio ambiente;0521;Ciências ambientais;0521C01;Ciências ambientais;2019-05-30;;
+05;Ciências naturais, matemática e estatística;052;Meio ambiente;0521;Ciências ambientais;0521E01;Ecologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0531;Química;0531Q01;Química;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0531;Química;0531Q02;Química industrial e tecnológica;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0532;Ciências da terra;0532G01;Geofísica;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0532;Ciências da terra;0532G02;Geologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0532;Ciências da terra;0532G03;Geoprocessamento;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0532;Ciências da terra;0532M01;Meteorologia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0532;Ciências da terra;0532O01;Oceanografia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0533;Física;0533A01;Astronomia;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0533;Física;0533F01;Física;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0533;Física;0533F02;Física aplicada;2019-05-30;;
+05;Ciências naturais, matemática e estatística;053;Ciências físicas;0533;Física;0533F03;Física médica;2019-05-30;;
+05;Ciências naturais, matemática e estatística;054;Matemática e estatística;0541;Matemática;0541M01;Matemática;2019-05-30;;
+05;Ciências naturais, matemática e estatística;054;Matemática e estatística;0541;Matemática;0541M02;Matemática aplicada e computacional;2019-05-30;;
+05;Ciências naturais, matemática e estatística;054;Matemática e estatística;0542;Estatística;0542C01;Ciências atuariais;2019-05-30;;
+05;Ciências naturais, matemática e estatística;054;Matemática e estatística;0542;Estatística;0542E01;Estatística;2019-05-30;;
+05;Ciências naturais, matemática e estatística;058;Programas interdisciplinares abrangendo ciências naturais, matemática e estatística;0588;Programas interdisciplinares abrangendo ciências naturais, matemática e estatística;0588P01;Programas interdisciplinares abrangendo ciências naturais, matemática e estatística;2019-05-30;;
+05;Ciências naturais, matemática e estatística;059;Programas abrangendo ciências naturais, matemática e estatística em processo de definição da classificação;0599;Programas abrangendo ciências naturais, matemática e estatística em processo de definição da classificação;0599P01;Programas abrangendo ciências naturais, matemática e estatística em processo de definição da classificação;2023-05-03;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0612;Infraestrutura e gestão de TIC;0612B01;Banco de dados;2019-05-30;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0612;Infraestrutura e gestão de TIC;0612D01;Defesa cibernética;2019-05-30;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0612;Infraestrutura e gestão de TIC;0612G01;Gestão da tecnologia da informação;2019-05-30;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0612;Infraestrutura e gestão de TIC;0612R01;Redes de computadores;2019-05-30;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0612;Infraestrutura e gestão de TIC;0612S01;Segurança da informação;;Remanejado da área detalhada suprimida 0615.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613C01;Ciência da computação;;"Remanejado da área detalhada suprimida 0614, e mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613E01;Engenharia de software;2019-05-30;"Mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613I01;Inteligência artificial;;"Remanejado da área detalhada suprimida 0614, e mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613I02;Internet das coisas;;"Remanejado da área detalhada suprimida 0616, e mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613S01;Sistemas de informação;;"Remanejado da área detalhada suprimida 0615, e mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Análise e desenvolvimento de algoritmos e aplicações;0613S02;Sistemas para internet;;"Remanejado da área detalhada suprimida 0615, e mudança do nome da área detalhada de ""Produção de Software"" para ""Análise e desenvolvimento de algoritmos e aplicações""";2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0613;Produção de software;0613J01;Jogos digitais;2019-05-30;Remanejado para a área detalhada 0681;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0614;Ciência da computação;0614C01;Ciência da computação;2019-05-30;Exclusão da área detalhada 0614;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0614;Ciência da computação;0614I01;Inteligência artificial;2021-02-25;Exclusão da área detalhada 0614;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0615;Gestão e desenvolvimento de sistemas de informação;0615S01;Segurança da informação;2019-05-30;Exclusão da área detalhada 0615;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0615;Gestão e desenvolvimento de sistemas de informação;0615S02;Sistemas de informação;2019-05-30;Exclusão da área detalhada 0615;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0615;Gestão e desenvolvimento de sistemas de informação;0615S03;Sistemas para internet;2019-05-30;Exclusão da área detalhada 0615;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0616;Desenvolvimento de sistemas que integram software e hardware;0616E01;Engenharia de computação (DCN Computação);2019-05-30;Exclusão da área detalhada 0616;2024-06-04
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0616;Desenvolvimento de sistemas que integram software e hardware;0616I01;Internet das coisas;2021-02-25;Exclusão da área detalhada 0616;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0616;Desenvolvimento de sistemas que integram software e hardware;0616S01;Sistemas embarcados;2019-05-30;Exclusão da área detalhada 0616;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0617;Soluções computacionais para domínios específicos;0617A01;Agrocomputação;2021-02-25;Área detalhada 0617 remanejada para a área específica 068 com novo código 0681;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0617;Soluções computacionais para domínios específicos;0617C01;Ciência de dados;2021-02-25;Área detalhada 0617 remanejada para a área específica 068 com novo código 0681;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0617;Soluções computacionais para domínios específicos;0617C02;Computação e Tecnologias da Informação e Comunicação (TIC) em biociências e saúde;2021-02-25;Área detalhada 0617 remanejada para a área específica 068 com novo código 0681;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0617;Soluções computacionais para domínios específicos;0617C03;Criação digital;2021-02-25;Área detalhada 0617 remanejada para a área específica 068 com novo código 0681;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);061;Computação e Tecnologias da Informação e Comunicação (TIC);0619;Programas abrangendo Computação e Tecnologias da Informação e Comunicação (TIC) em processo de definição da classificação;0619P01;Programas abrangendo Computação e Tecnologias da Informação e Comunicação (TIC) em processo de definição da classificação;;Área detalhada 0699 alterada para 0619 e rótulo 0699P01 alterado para 0619P01.;2024-11-21
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0681;Soluções computacionais para domínios específicos;0681A01;Agrocomputação;;Remanejado da área detalhada com código anterior 0617.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0681;Soluções computacionais para domínios específicos;0681C01;Ciência de dados;;Remanejado da área detalhada com código anterior 0617.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0681;Soluções computacionais para domínios específicos;0681C02;Computação e Tecnologias da Informação e Comunicação (TIC) em biociências e saúde;;Remanejado da área detalhada com código anterior 0617.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0681;Soluções computacionais para domínios específicos;0681C03;Criação digital;;Remanejado da área detalhada com código anterior 0617.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0681;Soluções computacionais para domínios específicos;0681J01;Jogos digitais;;Remanejado da área detalhada 0613 devido a sua característica interdisciplinar.;2025-03-24
+06;Computação e Tecnologias da Informação e Comunicação (TIC);068;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0688;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);0688P01;Programas interdisciplinares abrangendo computação e Tecnologias da Informação e Comunicação (TIC);2019-05-30;;
+06;Computação e Tecnologias da Informação e Comunicação (TIC);069;Programas abrangendo Computação e Tecnologias da Informação e Comunicação (TIC) em processo de definição da classificação;0699;Programas abrangendo Computação e Tecnologias da Informação e Comunicação (TIC) em processo de definição da classificação;0699P01;Programas abrangendo Computação e Tecnologias da Informação e Comunicação (TIC) em processo de definição da classificação;2023-05-03;Exclusão da área específica 069, remanejamento da área detalhada 0699 e do rótulo 0699P01 para a área específica 061.;2024-11-21
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0710;Engenharia e profissões correlatas sem definição precisa;0710E01;Engenharia;2019-05-30;Inativado;2023-11-16
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711B01;Biocombustíveis;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711E01;Engenharia bioquímica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711E02;Engenharia de bioprocessos;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711E03;Engenharia de biotecnologia;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711E04;Engenharia de nanotecnologia;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0711;Engenharia química e de processos;0711E05;Engenharia química;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0712;Tecnologia de proteção ambiental;0712E01;Engenharia ambiental;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0712;Tecnologia de proteção ambiental;0712E02;Engenharia ambiental e sanitária;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0712;Tecnologia de proteção ambiental;0712G01;Gestão ambiental;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0712;Tecnologia de proteção ambiental;0712G02;Gestão de resíduos;2019-05-30;Altera o nome do rótulo de Gestão de resíduos sólidos para Gestão de resíduos.;2019-07-30
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0712;Tecnologia de proteção ambiental;0712S01;Saneamento ambiental;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E01;Eletrotécnica industrial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E02;Energias renováveis;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E03;Engenharia bioenergética;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E04;Engenharia de energia;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E05;Engenharia elétrica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713E06;Engenharia nuclear;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713R01;Refrigeração e climatização;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0713;Eletricidade e energia;0713S01;Sistemas elétricos;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714A01;Automação industrial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E01;Eletrônica industrial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E02;Engenharia acústica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E03;Engenharia biomédica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E04;Engenharia de computação;2019-05-30;Altera o nome do rótulo de Engenharia de computação (DCN Engenharia) para Engenharia de computação.;2024-06-04
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E05;Engenharia de controle e automação;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E06;Engenharia de informação;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E07;Engenharia de telecomunicações;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E08;Engenharia eletrônica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714E09;Engenharia mecatrônica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714G01;Gestão de telecomunicações;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714M01;Mecatrônica industrial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714R01;Redes de telecomunicações;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714S01;Sistemas biomédicos;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714S02;Sistemas de telecomunicações;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714S03;Sistemas embarcados;;Remanejado da área detalhada suprimida 0616.;2025-03-24
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0714;Eletrônica e automação;0714T01;Telemática;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715E01;Engenharia física;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715E02;Engenharia mecânica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715E03;Engenharia metalúrgica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715F01;Fabricação mecânica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715M01;Manutenção industrial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715M02;Mecânica de precisão;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715P01;Processos metalúrgicos;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0715;Engenharia mecânica e metalurgia;0715S01;Soldagem;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716A01;Aeroespacial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716C01;Construção naval;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716E01;Engenharia aeroespacial;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716E02;Engenharia aeronáutica;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716E03;Engenharia automotiva;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716E04;Engenharia ferroviária e metroviária;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716E05;Engenharia naval;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716M01;Manutenção de aeronaves;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716S01;Sistemas automotivos;2019-05-30;;
+07;Engenharia, produção e construção;071;Engenharia e profissões correlatas;0716;Veículos a motor, construção naval, aeronáutica, ferroviária e metroviária;0716S02;Sistemas de navegação fluvial;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721A01;Alimentos;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721E01;Engenharia de alimentos;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721L01;Laticínios;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721P01;Processamento de carnes;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721P02;Produção de cachaça;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721P03;Produção sucroalcooleira;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0721;Processamento de alimentos;0721P04;Produção de cerveja;2019-07-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722C01;Cerâmica;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722C02;Ciências dos materiais;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722E01;Engenharia de materiais;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722P01;Papel e celulose;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722P02;Polímeros;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722P03;Produção joalheira;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0722;Materiais;0722P04;Produção moveleira;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0723;Têxteis (vestuário, calçados e couro);0723E01;Engenharia têxtil;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0723;Têxteis (vestuário, calçados e couro);0723P01;Produção de vestuário;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0723;Têxteis (vestuário, calçados e couro);0723P02;Produção têxtil;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724E01;Engenharia de minas;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724E02;Engenharia de petróleo;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724E03;Engenharia geológica;2019-05-30;Inativado;2025-05-29
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724M01;Mineração;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724P01;Petróleo e gás;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0724;Mineração e extração;0724R01;Rochas ornamentais;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0725;Produção e processos de fabricação;0725E01;Engenharia de manufatura;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0725;Produção e processos de fabricação;0725E02;Engenharia de produção;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0725;Produção e processos de fabricação;0725E03;Engenharia industrial;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0725;Produção e processos de fabricação;0725P01;Produção gráfica;2019-05-30;;
+07;Engenharia, produção e construção;072;Produção e processamento;0725;Produção e processos de fabricação;0725P02;Produção industrial;2019-05-30;Inativado;2025-05-29
+07;Engenharia, produção e construção;073;Arquitetura e construção;0731;Arquitetura e planejamento urbano;0731A01;Agrimensura;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0731;Arquitetura e planejamento urbano;0731A02;Arquitetura e urbanismo;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0731;Arquitetura e planejamento urbano;0731E01;Engenharia cartográfica;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0731;Arquitetura e planejamento urbano;0731E02;Engenharia de agrimensura;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0731;Arquitetura e planejamento urbano;0731E03;Engenharia de agrimensura e cartográfica;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732C01;Construção de edifícios;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732C02;Controle de obras;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732E01;Engenharia civil;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732E02;Engenharia de recursos hídricos;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732E03;Engenharia de transportes;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732E04;Engenharia portuária;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732E05;Estradas;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732G01;Gestão de recursos hídricos;2019-05-30;;
+07;Engenharia, produção e construção;073;Arquitetura e construção;0732;Engenharia civil e construção;0732M01;Material de construção;2019-05-30;;
+07;Engenharia, produção e construção;078;Programas interdisciplinares abrangendo engenharia, produção e construção;0788;Programas interdisciplinares abrangendo engenharia, produção e construção;0788P01;Programas interdisciplinares abrangendo engenharia, produção e construção;2019-05-30;;
+07;Engenharia, produção e construção;079;Programas abrangendo engenharia, produção e construção em processo de definição da classificação;0799;Programas abrangendo engenharia, produção e construção em processo de definição da classificação;0799P01;Programas abrangendo engenharia, produção e construção em processo de definição da classificação;2023-05-03;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811A01;Agroecologia;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811A02;Agroindústria;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811A03;Agronegócio;2019-05-30;Inativado;2025-05-29
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811A04;Agronomia;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811A05;Agropecuária;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811C01;Cafeicultura;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811E01;Engenharia agrícola;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811E02;Engenharia de biossistemas;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811F01;Fruticultura;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811I01;Irrigação e drenagem;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811M01;Manejo da produção agrícola;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811V01;Viticultura e enologia;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0811;Produção agrícola, agropecuária e zootecnia;0811Z01;Zootecnia;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;081;Agricultura;0812;Horticultura;0812H01;Horticultura;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;082;Silvicultura;0821;Silvicultura;0821E01;Engenharia florestal;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;082;Silvicultura;0821;Silvicultura;0821S01;Silvicultura;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;083;Pesca;0831;Pesca;0831A01;Aquicultura;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;083;Pesca;0831;Pesca;0831E01;Engenharia de pesca;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;083;Pesca;0831;Pesca;0831P01;Produção pesqueira;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;084;Veterinária;0841;Veterinária;0841M01;Medicina veterinária;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;088;Programas interdisciplinares abrangendo agricultura, silvicultura, pesca e veterinária;0888;Programas interdisciplinares abrangendo agricultura, silvicultura, pesca e veterinária;0888P01;Programas interdisciplinares abrangendo agricultura, silvicultura, pesca e veterinária;2019-05-30;;
+08;Agricultura, silvicultura, pesca e veterinária;089;Programas abrangendo agricultura, silvicultura, pesca e veterinária em processo de definição da classificação;0899;Programas abrangendo agricultura, silvicultura, pesca e veterinária em processo de definição da classificação;0899P01;Programas abrangendo agricultura, silvicultura, pesca e veterinária em processo de definição da classificação;2023-05-03;;
+09;Saúde e bem-estar;091;Saúde;0911;Odontologia;0911O01;Odontologia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0912;Medicina;0912M01;Medicina;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0913;Enfermagem;0913E01;Enfermagem;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914A01;Análises clínicas e toxicológicas;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914B01;Biomedicina;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914O01;Oftálmica;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914O02;Optometria;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914P01;Prótese e órtese;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0914;Tecnologia de diagnóstico e tratamento médico;0914R01;Radiologia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915E01;Educação física;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915F01;Fisioterapia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915F02;Fonoaudiologia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915N01;Nutrição;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915P01;Podologia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0915;Promoção, prevenção, terapia e reabilitação;0915T01;Terapia ocupacional;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0916;Farmácia;0916F01;Farmácia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0917;Medicina e terapia tradicional e complementar;0917M01;Musicoterapia;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0917;Medicina e terapia tradicional e complementar;0917P01;Práticas integrativas;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0918;Saúde pública e saúde coletiva;0918S01;Saúde coletiva;2019-05-30;;
+09;Saúde e bem-estar;091;Saúde;0918;Saúde pública e saúde coletiva;0918S02;Saúde pública;2019-05-30;;
+09;Saúde e bem-estar;092;Bem-estar;0921;Assistência a idosos e a deficientes;0921A01;Assistência a idosos e a deficientes;2019-05-30;;
+09;Saúde e bem-estar;092;Bem-estar;0921;Assistência a idosos e a deficientes;0921G01;Gerontologia;2019-05-30;;
+09;Saúde e bem-estar;092;Bem-estar;0923;Serviço social;0923S01;Serviço social;2019-05-30;;
+09;Saúde e bem-estar;098;Programas interdisciplinares abrangendo saúde e bem-estar;0988;Programas interdisciplinares abrangendo saúde e bem-estar;0988P01;Programas interdisciplinares abrangendo saúde e bem-estar;2019-05-30;;
+09;Saúde e bem-estar;099;Programas abrangendo saúde e bem-estar em processo de definição da classificação;0999;Programas abrangendo saúde e bem-estar em processo de definição da classificação;0999P01;Programas abrangendo saúde e bem-estar em processo de definição da classificação;2023-05-03;;
+10;Serviços;101;Serviços pessoais;1011;Serviços domésticos;1011E01;Economia doméstica;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1012;Serviços de beleza;1012E01;Estética e cosmética;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1013;Serviços de alimentação;1013G01;Gastronomia;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1014;Esportes e lazer;1014F01;Formação de técnicos e treinadores esportivos;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1014;Esportes e lazer;1014G01;Gestão desportiva e de lazer;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1015;Turismo e hotelaria;1015E01;Eventos;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1015;Turismo e hotelaria;1015H01;Hotelaria;2019-05-30;;
+10;Serviços;101;Serviços pessoais;1015;Turismo e hotelaria;1015T01;Turismo;2019-05-30;;
+10;Serviços;102;Higiene e serviços de saúde ocupacional;1022;Saúde e segurança no trabalho;1022S01;Segurança no trabalho;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1031;Setor militar e de defesa;1031C01;Ciências militares;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1032;Proteção de pessoas e de propriedades;1032I01;Investigação e perícia;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1032;Proteção de pessoas e de propriedades;1032S01;Segurança no trânsito;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1032;Proteção de pessoas e de propriedades;1032S02;Segurança privada;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1032;Proteção de pessoas e de propriedades;1032S03;Segurança pública;2019-05-30;;
+10;Serviços;103;Serviços de segurança;1032;Proteção de pessoas e de propriedades;1032S04;Serviços penais;2019-05-30;;
+10;Serviços;104;Serviços de transporte;1041;Serviços de transporte;1041C01;Ciências aeronáuticas;2019-05-30;;
+10;Serviços;104;Serviços de transporte;1041;Serviços de transporte;1041G01;Gestão portuária;2019-05-30;;
+10;Serviços;104;Serviços de transporte;1041;Serviços de transporte;1041T01;Transporte aéreo;2019-05-30;;
+10;Serviços;104;Serviços de transporte;1041;Serviços de transporte;1041T02;Transporte terrestre;2019-05-30;;
+10;Serviços;108;Programas interdisciplinares abrangendo serviços;1088;Programas interdisciplinares abrangendo serviços;1088P01;Programas interdisciplinares abrangendo serviços;2019-05-30;;
+10;Serviços;109;Programas abrangendo serviços em processo de definição da classificação;1099;Programas abrangendo serviços em processo de definição da classificação;1099P01;Programas abrangendo serviços em processo de definição da classificação;2023-05-03;;

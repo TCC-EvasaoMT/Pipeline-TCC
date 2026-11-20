@@ -3,13 +3,17 @@ from dataclasses import dataclass
 
 from . import config
 
-# Os exemplos do provedor só usam COUNT(coluna); falta confirmar com ele se COUNT(*) é aceito.
 CONTAGEM = "COUNT(*)"
 
-# IES pública (1 federal, 2 estadual, 3 municipal) com sede em MT (51). Em SUP_IES os códigos são texto.
+# O SEDAP+ não soma colunas NUMERIC, só INT64.
+def soma(coluna: str) -> str:
+    return f"SUM(CAST({coluna} AS INT64))"
+
+
+# IES pública (1 federal, 2 estadual, 3 municipal) com sede em MT (51)
 FILTRO_ESCOPO = ("i.CO_UF = '51'", "i.TP_CATEGORIA_ADMINISTRATIVA IN ('1', '2', '3')")
 
-# Códigos de TP_SITUACAO (não existe o código 1).
+# Códigos de TP_SITUACAO
 SITUACOES = (
     ("alunos_cursando", 2),
     ("alunos_matricula_trancada", 3),
@@ -21,10 +25,9 @@ SITUACOES = (
 
 TURNOS = ("INTEGRAL", "MATUTINO", "VESPERTINO", "NOTURNO", "EAD")
 
+# O SEDAP+ não deixa identificar a IES no resultado então o CO_IES só entra no JOIN, nunca no SELECT ou no GROUP BY. 
 # Colunas com o mesmo nome em SUP_IES e SUP_CURSO ganham sufixo para não se repetirem no resultado.
 ATRIBUTOS_IES = (
-    ("i.NO_IES", "NO_IES"),
-    ("i.SG_IES", "SG_IES"),
     ("i.CO_MANTENEDORA", "CO_MANTENEDORA"),
     ("i.TP_CATEGORIA_ADMINISTRATIVA", "TP_CATEGORIA_ADMINISTRATIVA"),
     ("i.TP_ORGANIZACAO_ACADEMICA", "TP_ORGANIZACAO_ACADEMICA"),
@@ -53,11 +56,11 @@ ATRIBUTOS_CURSO = (
     ("c.NU_PERC_CARGA_SEMI_PRES", "NU_PERC_CARGA_SEMI_PRES"),
 )
 
-INGRESSANTES = ("SUM(a.IN_INGRESSO_TOTAL)", "ingressantes_total")
-MATRICULAS = ("SUM(a.IN_MATRICULA)", "matriculas_total")
+INGRESSANTES = (soma("a.IN_INGRESSO_TOTAL"), "ingressantes_total")
+MATRICULAS = (soma("a.IN_MATRICULA"), "matriculas_total")
 
-# Conta todos os docentes, em exercício ou afastados. Doutor = escolaridade 5; tempo integral =
-# regime 1 ou 2 (com ou sem dedicação exclusiva). Em SUP_DOCENTE os códigos são texto.
+# Conta todos os docentes, em exercício ou afastados
+# Doutor = escolaridade 5, tempo integral = regime 1 ou 2 (com ou sem dedicação exclusiva)
 MEDIDAS_DOCENTES = (
     (CONTAGEM, "docentes_total"),
     ("SUM(CASE WHEN d.TP_ESCOLARIDADE = '5' THEN 1 ELSE 0 END)", "docentes_doutores"),
@@ -96,13 +99,10 @@ def _montar(grupo, medidas, origem, filtros):
 
 
 def _alunos(ano, extra=(), medidas_extra=()):
-    # Em SUP_ALUNO, CO_* e TP_* são texto em 2019 e numéricos de 2020 em diante.
-    # Nas outras tabelas são texto em todos os anos.
     texto = ano == 2019
     chave_ies = "a.CO_IES" if texto else "CAST(a.CO_IES AS STRING)"
     chave_curso = "a.CO_CURSO" if texto else "CAST(a.CO_CURSO AS STRING)"
-    grupo = (("a.NU_ANO", "NU_ANO"), ("a.CO_IES", "CO_IES"), ("a.CO_CURSO", "CO_CURSO"),
-             *ATRIBUTOS_IES, *ATRIBUTOS_CURSO, *extra)
+    grupo = (("a.NU_ANO", "NU_ANO"), ("a.CO_CURSO", "CO_CURSO"), *ATRIBUTOS_IES, *ATRIBUTOS_CURSO, *extra)
     medidas = (
         (CONTAGEM, "vinculos_total"),
         *((f"SUM(CASE WHEN a.TP_SITUACAO = {_valor(codigo, texto)} THEN 1 ELSE 0 END)", nome)
@@ -118,53 +118,22 @@ def _alunos(ano, extra=(), medidas_extra=()):
     return _montar(grupo, medidas, origem, filtros)
 
 
-# Uma linha por curso: o SEDAP+ pode recusar, e aí entram os microdados públicos (contingência).
-def _vagas(ano):
-    grupo = (("c.NU_ANO", "NU_ANO"), ("c.CO_IES", "CO_IES"), ("c.CO_CURSO", "CO_CURSO"),
-             *ATRIBUTOS_IES, *ATRIBUTOS_CURSO)
-    medidas = (
-        ("SUM(c.QT_VAGA_TOTAL)", "vagas_totais"),
-        *((f"SUM(c.QT_VAGAS_NOVAS_{turno})", f"vagas_novas_{turno.lower()}") for turno in TURNOS),
-        ("SUM(c.QT_INSCRITO_TOTAL)", "inscritos_total"),
-    )
-    origem = (
-        f"FROM {tabela('SUP_CURSO', ano)} AS c\n"
-        f"JOIN {tabela('SUP_IES', ano)} AS i ON c.CO_IES = i.CO_IES"
-    )
-    return _montar(grupo, medidas, origem, (*FILTRO_ESCOPO, "c.TP_NIVEL_ACADEMICO = '1'"))
-
-
 def _docentes_curso(ano):
-    grupo = (("dc.NU_ANO", "NU_ANO"), ("dc.CO_IES", "CO_IES"), ("dc.CO_CURSO", "CO_CURSO"))
+    grupo = (("dc.NU_ANO", "NU_ANO"), ("dc.CO_CURSO", "CO_CURSO"))
+    # A SUP_DOCENTE_CURSO não tem o nível do curso: a SUP_CURSO entra só para ficar com a graduação
     origem = (
         f"FROM {tabela('SUP_DOCENTE_CURSO', ano)} AS dc\n"
         f"JOIN {tabela('SUP_DOCENTE', ano)} AS d ON dc.CO_DOCENTE_IES = d.CO_DOCENTE_IES\n"
-        f"JOIN {tabela('SUP_IES', ano)} AS i ON dc.CO_IES = i.CO_IES"
+        f"JOIN {tabela('SUP_IES', ano)} AS i ON dc.CO_IES = i.CO_IES\n"
+        f"JOIN {tabela('SUP_CURSO', ano)} AS c ON dc.CO_CURSO = c.CO_CURSO"
     )
-    return _montar(grupo, MEDIDAS_DOCENTES, origem, FILTRO_ESCOPO)
+    filtros = (*FILTRO_ESCOPO, "c.TP_NIVEL_ACADEMICO = '1'")  # 1 = graduação
+    return _montar(grupo, MEDIDAS_DOCENTES, origem, filtros)
 
 
-# Uma linha por IES: também pode ser recusada (contingência).
-def _ies(ano):
-    grupo = (("i.NU_ANO", "NU_ANO"), ("i.CO_IES", "CO_IES"), *ATRIBUTOS_IES, ("i.TP_REFERENTE", "TP_REFERENTE"))
-    medidas = (
-        ("SUM(i.QT_TEC_TOTAL)", "tecnicos_total"),
-        ("SUM(i.VL_RECEITA_PROPRIA)", "receita_propria"),
-        ("SUM(i.VL_RECEITA_TRANSFERENCIA)", "receita_transferencia"),
-        ("SUM(i.VL_RECEITA_OUTRA)", "receita_outra"),
-        ("SUM(i.VL_DESPESA_PESSOAL_DOCENTE)", "despesa_pessoal_docente"),
-        ("SUM(i.VL_DESPESA_PESSOAL_TECNICO)", "despesa_pessoal_tecnico"),
-        ("SUM(i.VL_DESPESA_PESSOAL_ENCARGO)", "despesa_pessoal_encargo"),
-        ("SUM(i.VL_DESPESA_CUSTEIO)", "despesa_custeio"),
-        ("SUM(i.VL_DESPESA_INVESTIMENTO)", "despesa_investimento"),
-        ("SUM(i.VL_DESPESA_PESQUISA)", "despesa_pesquisa"),
-        ("SUM(i.VL_DESPESA_OUTRA)", "despesa_outra"),
-    )
-    return _montar(grupo, medidas, f"FROM {tabela('SUP_IES', ano)} AS i", FILTRO_ESCOPO)
-
-
+# Uma linha por instituição (combinação dos atributos da IES): as IES iguais nesses atributos são somadas.
 def _docentes_ies(ano):
-    grupo = (("d.NU_ANO", "NU_ANO"), ("d.CO_IES", "CO_IES"))
+    grupo = (("d.NU_ANO", "NU_ANO"), *ATRIBUTOS_IES)
     origem = (
         f"FROM {tabela('SUP_DOCENTE', ano)} AS d\n"
         f"JOIN {tabela('SUP_IES', ano)} AS i ON d.CO_IES = i.CO_IES"
@@ -172,11 +141,11 @@ def _docentes_ies(ano):
     return _montar(grupo, MEDIDAS_DOCENTES, origem, FILTRO_ESCOPO)
 
 
-# Três fatores são calculados na própria consulta; falta confirmar se o SEDAP+ aceita isso no GROUP BY.
-# Os CASE não têm ELSE de propósito: sem dado, a categoria fica nula.
+# Três fatores são calculados na própria consulta e o SEDAP+ aceita esses cálculos no GROUP BY.
+# Os CASE não tem ELSE de propósito: sem dado, a categoria fica nula.
 def expressao_fator(variavel: str, ano: int) -> str:
     if variavel == "FAIXA_ETARIA":
-        # Em 2019 usa NU_IDADE; depois, o ano do Censo menos o ano de DT_NASCIMENTO (texto dd/mm/aaaa).
+        # Em 2019 usa NU_IDADE; depois, o ano do Censo menos o ano de DT_NASCIMENTO (texto dd/mm/aaaa)
         idade = "a.NU_IDADE" if ano == 2019 else "(a.NU_ANO - CAST(SUBSTR(a.DT_NASCIMENTO, 7, 4) AS INT64))"
         return (f"CASE WHEN {idade} <= 19 THEN 'ATE_19' WHEN {idade} <= 24 THEN '20_24' "
                 f"WHEN {idade} <= 29 THEN '25_29' WHEN {idade} <= 39 THEN '30_39' "
@@ -209,11 +178,9 @@ def catalogo(anos=config.ANOS) -> list:
     for ano in anos:
         fixas = (
             ("alunos_curso", "evasao_curso", _alunos(ano, medidas_extra=(INGRESSANTES, MATRICULAS))),
-            ("vagas_curso", "evasao_curso", _vagas(ano)),
             ("docentes_curso", "evasao_curso", _docentes_curso(ano)),
             ("alunos_coorte", "evasao_coorte",
              _alunos(ano, extra=(("a.NU_ANO_INGRESSO", "NU_ANO_INGRESSO"),), medidas_extra=(INGRESSANTES,))),
-            ("ies", "contexto_ies", _ies(ano)),
             ("docentes_ies", "contexto_ies", _docentes_ies(ano)),
         )
         for nome, fato, (sql, colunas) in fixas:

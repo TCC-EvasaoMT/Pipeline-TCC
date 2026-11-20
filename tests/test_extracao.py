@@ -52,7 +52,7 @@ class TestExtracao(unittest.TestCase):
         self.addCleanup(temporaria.cleanup)
         self.pasta = Path(temporaria.name)
         self.consulta = next(c for c in consultas.catalogo([2021]) if c.nome == "alunos_curso")
-        self.outra = next(c for c in consultas.catalogo([2021]) if c.nome == "ies")
+        self.outra = next(c for c in consultas.catalogo([2021]) if c.nome == "docentes_ies")
 
     def arquivos(self):
         return sorted(self.pasta.glob("*/*.json"))
@@ -72,6 +72,13 @@ class TestExtracao(unittest.TestCase):
         self.assertEqual((doc["status"], doc["ano"], doc["sql"]), ("ok", 2021, self.consulta.sql))
         self.assertEqual(doc["resposta"], corpo)
         self.assertTrue(doc["executado_em"])
+
+    def test_sucesso_com_201_e_gravado_como_ok(self, _sleep):
+        corpo = {**linhas_validas(self.consulta), "success": True, "estatisticas": {}}
+        total = extracao.extrair([self.consulta], sessao=Sessao(Resposta(201, corpo)), pasta=self.pasta)
+        self.assertEqual(total["ok"], 1)
+        doc = json.loads(self.arquivos()[0].read_text(encoding="utf-8"))
+        self.assertEqual((doc["status"], doc["status_http"], doc["erro"], doc["resposta"]), ("ok", 201, None, corpo))
 
     def test_nao_reenvia_o_que_ja_esta_na_bronze(self, _sleep):
         extracao.extrair([self.consulta], sessao=Sessao(Resposta(200, linhas_validas(self.consulta))),
@@ -101,7 +108,7 @@ class TestExtracao(unittest.TestCase):
         docs = [json.loads(a.read_text(encoding="utf-8")) for a in self.arquivos()]
         recusada = next(d for d in docs if d["consulta"] == "alunos_curso")
         self.assertEqual((recusada["status_http"], recusada["erro"]), (400, "consulta recusada"))
-        # Uma consulta recusada não é reenviada sozinha (evita requisições repetidas).
+        # Uma consulta recusada não é reenviada sozinha (evita requisições repetidas)
         sessao = Sessao()
         extracao.extrair([self.consulta], sessao=sessao, pasta=self.pasta)
         self.assertEqual(sessao.chamadas, [])

@@ -1,27 +1,20 @@
--- Silver: reconstruída a cada execução a partir da bronze.
--- Padroniza os códigos, junta os anos e as referências e marca ruído e grupos pequenos, sem corrigir nada.
--- As chaves primárias garantem o grão: um curso repetido na mesma consulta faz a carga falhar.
+-- Silver reconstruída a cada execução a partir da bronze. Ela padroniza os códigos, junta os anos e as referências e marca ruído e grupos pequenos, sem corrigir nada.
+-- Um curso repetido na mesma consulta faz a carga falhar.
 
 DROP SCHEMA IF EXISTS silver CASCADE;
 CREATE SCHEMA silver;
 
--- 2019 vem como texto ('51') e 2020 em diante como número (51 ou 51.0): tudo vira '51'.
+-- Se algum ano vem como texto ('51') e outro com número (51 ou 51.0): tudo vira '51'
 CREATE FUNCTION silver.codigo(valor text) RETURNS text
 LANGUAGE sql IMMUTABLE AS $$
     SELECT CASE WHEN valor ~ '^[0-9]+\.0+$' THEN split_part(valor, '.', 1) ELSE valor END
 $$;
 
--- A API pode devolver os nomes de coluna em outra caixa.
+-- A API pode devolver os nomes de coluna em outra caixa
 CREATE FUNCTION silver.minusculas(linha jsonb) RETURNS jsonb
 LANGUAGE sql IMMUTABLE AS $$
     SELECT coalesce(jsonb_object_agg(lower(chave), valor), '{}'::jsonb)
     FROM jsonb_each(linha) AS e(chave, valor)
-$$;
-
--- Nula só se todas as partes forem nulas (no catálogo, nulo significa "não se aplica").
-CREATE FUNCTION silver.soma_partes(VARIADIC partes numeric[]) RETURNS numeric
-LANGUAGE sql IMMUTABLE AS $$
-    SELECT sum(parte) FROM unnest(partes) AS parte
 $$;
 
 -- Negativo vem do ruído do SEDAP+: só marca, o valor fica como veio.
@@ -30,13 +23,13 @@ LANGUAGE sql IMMUTABLE AS $$
     SELECT coalesce(bool_or(valor < 0), false) FROM unnest(valores) AS valor
 $$;
 
--- Base de risco (vínculos menos falecidos) abaixo de 30.
+-- Base de risco (vínculos menos falecidos) abaixo de 30
 CREATE FUNCTION silver.grupo_pequeno(vinculos numeric, falecidos numeric) RETURNS boolean
 LANGUAGE sql IMMUTABLE AS $$
     SELECT vinculos - falecidos < 30
 $$;
 
--- Nos CSV de referência, célula vazia vira nulo.
+-- Nos CSV de referência, célula vazia vira nulo
 CREATE TABLE silver.codigo_catalogo AS
 SELECT dados->>'tabela' AS tabela,
        dados->>'variavel' AS variavel,
@@ -46,7 +39,7 @@ FROM bronze.referencia
 WHERE arquivo = 'codigos.csv';
 ALTER TABLE silver.codigo_catalogo ADD UNIQUE NULLS NOT DISTINCT (tabela, variavel, codigo);
 
--- Código fora do catálogo aparece como veio, sem ser descartado.
+-- Código fora do catálogo aparece como veio, sem ser descartado
 CREATE FUNCTION silver.decodificar(p_tabela text, p_variavel text, p_codigo text) RETURNS text
 LANGUAGE sql STABLE AS $$
     SELECT coalesce(
@@ -68,8 +61,7 @@ FROM bronze.referencia
 WHERE arquivo = 'fatores_perfil.csv';
 ALTER TABLE silver.fator_perfil ADD UNIQUE NULLS NOT DISTINCT (variavel, codigo_categoria);
 
--- Municípios criados depois de 2017 não têm meso nem microrregião no IBGE:
--- para eles, a UF e a região vêm da região imediata.
+-- Municípios criados depois de 2017 não têm meso nem microrregião no IBGE, para eles, a UF e a região vêm da região imediata
 CREATE TABLE silver.municipio AS
 SELECT dados->>'id' AS codigo_municipio,
        dados->>'nome' AS municipio,
@@ -113,8 +105,12 @@ CREATE TABLE silver.curso_ano AS
 WITH bruto AS (
     SELECT DISTINCT ON (ano, silver.codigo(linha->>'co_curso'))
         ano,
-        silver.codigo(linha->>'co_ies') AS co_ies,
         silver.codigo(linha->>'co_curso') AS co_curso,
+        -- Instituição do curso (ver silver.instituicao).
+        silver.codigo(linha->>'co_mantenedora') AS co_mantenedora,
+        silver.codigo(linha->>'tp_categoria_administrativa') AS tp_categoria_administrativa,
+        silver.codigo(linha->>'tp_organizacao_academica') AS tp_organizacao_academica,
+        silver.codigo(linha->>'co_municipio_ies') AS co_municipio_ies,
         linha->>'no_curso' AS no_curso,
         silver.codigo(linha->>'tp_situacao_curso') AS tp_situacao_curso,
         linha->>'co_cine_rotulo' AS co_cine_rotulo,
@@ -138,7 +134,7 @@ WITH bruto AS (
         (linha->>'in_oferece_disc_semi_pres')::numeric AS in_oferece_disc_semi_pres,
         (linha->>'nu_perc_carga_semi_pres')::numeric AS nu_perc_carga_semi_pres
     FROM silver.linha_sedap
-    WHERE consulta IN ('alunos_curso', 'alunos_coorte', 'vagas_curso') OR fato = 'evasao_perfil'
+    WHERE consulta IN ('alunos_curso', 'alunos_coorte') OR fato = 'evasao_perfil'
     ORDER BY ano, silver.codigo(linha->>'co_curso'), consulta
 )
 SELECT
@@ -173,22 +169,16 @@ LEFT JOIN silver.municipio AS m ON m.codigo_municipio = b.co_municipio_curso
 LEFT JOIN silver.cine AS k ON k.codigo_rotulo_cine = b.co_cine_rotulo;
 ALTER TABLE silver.curso_ano ADD PRIMARY KEY (ano, co_curso);
 
-CREATE TABLE silver.ies_ano AS
+-- O SEDAP+ não deixa identificar a IES. Filtramos por IES públicas como sede em MT e 4 atributos delas
+CREATE TABLE silver.instituicao AS
 WITH bruto AS (
-    SELECT DISTINCT ON (ano, silver.codigo(linha->>'co_ies'))
-        ano,
-        silver.codigo(linha->>'co_ies') AS co_ies,
-        linha->>'no_ies' AS no_ies,
-        linha->>'sg_ies' AS sg_ies,
+    SELECT DISTINCT
         silver.codigo(linha->>'co_mantenedora') AS co_mantenedora,
         silver.codigo(linha->>'tp_categoria_administrativa') AS tp_categoria_administrativa,
         silver.codigo(linha->>'tp_organizacao_academica') AS tp_organizacao_academica,
-        silver.codigo(linha->>'co_regiao_ies') AS co_regiao_ies,
-        silver.codigo(linha->>'co_uf_ies') AS co_uf_ies,
         silver.codigo(linha->>'co_municipio_ies') AS co_municipio_ies
     FROM silver.linha_sedap
-    WHERE consulta IN ('alunos_curso', 'alunos_coorte', 'vagas_curso', 'ies') OR fato = 'evasao_perfil'
-    ORDER BY ano, silver.codigo(linha->>'co_ies'), consulta
+    WHERE consulta IN ('alunos_curso', 'alunos_coorte', 'docentes_ies') OR fato = 'evasao_perfil'
 )
 SELECT
     b.*,
@@ -200,13 +190,14 @@ SELECT
     m.mesorregiao AS mesorregiao_sede, m.microrregiao AS microrregiao_sede
 FROM bruto AS b
 LEFT JOIN silver.municipio AS m ON m.codigo_municipio = b.co_municipio_ies;
-ALTER TABLE silver.ies_ano ADD PRIMARY KEY (ano, co_ies);
+ALTER TABLE silver.instituicao
+    ADD UNIQUE NULLS NOT DISTINCT (co_mantenedora, tp_categoria_administrativa, tp_organizacao_academica,
+                                   co_municipio_ies);
 
--- Entra todo curso que aparece em qualquer uma das três consultas (alunos, vagas e docentes).
+-- Entra todo curso que aparece em qualquer uma das duas consultas (alunos e docentes).
 CREATE TABLE silver.evasao_curso AS
 WITH alunos AS (
     SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
            silver.codigo(linha->>'co_curso') AS co_curso,
            (linha->>'vinculos_total')::numeric AS vinculos_total,
            (linha->>'alunos_cursando')::numeric AS alunos_cursando,
@@ -220,23 +211,8 @@ WITH alunos AS (
     FROM silver.linha_sedap
     WHERE consulta = 'alunos_curso'
 ),
-vagas AS (
-    SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
-           silver.codigo(linha->>'co_curso') AS co_curso,
-           (linha->>'vagas_totais')::numeric AS vagas_totais,
-           (linha->>'vagas_novas_integral')::numeric AS vagas_novas_integral,
-           (linha->>'vagas_novas_matutino')::numeric AS vagas_novas_matutino,
-           (linha->>'vagas_novas_vespertino')::numeric AS vagas_novas_vespertino,
-           (linha->>'vagas_novas_noturno')::numeric AS vagas_novas_noturno,
-           (linha->>'vagas_novas_ead')::numeric AS vagas_novas_ead,
-           (linha->>'inscritos_total')::numeric AS inscritos_total
-    FROM silver.linha_sedap
-    WHERE consulta = 'vagas_curso'
-),
 docentes AS (
     SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
            silver.codigo(linha->>'co_curso') AS co_curso,
            (linha->>'docentes_total')::numeric AS docentes_total,
            (linha->>'docentes_doutores')::numeric AS docentes_doutores,
@@ -245,32 +221,24 @@ docentes AS (
     WHERE consulta = 'docentes_curso'
 ),
 chaves AS (
-    SELECT ano, co_ies, co_curso FROM alunos
-    UNION SELECT ano, co_ies, co_curso FROM vagas
-    UNION SELECT ano, co_ies, co_curso FROM docentes
+    SELECT ano, co_curso FROM alunos
+    UNION SELECT ano, co_curso FROM docentes
 )
-SELECT k.ano, k.co_ies, k.co_curso,
+SELECT k.ano, k.co_curso,
        a.vinculos_total, a.alunos_cursando, a.alunos_matricula_trancada, a.alunos_desvinculados,
        a.alunos_transferidos, a.concluintes_total, a.alunos_falecidos,
        a.ingressantes_total, a.matriculas_total,
-       v.vagas_totais,
-       silver.soma_partes(v.vagas_novas_integral, v.vagas_novas_matutino, v.vagas_novas_vespertino,
-                          v.vagas_novas_noturno, v.vagas_novas_ead) AS vagas_novas,
-       v.inscritos_total,
        d.docentes_total, d.docentes_doutores, d.docentes_tempo_integral,
        silver.tem_negativo(a.vinculos_total, a.alunos_cursando, a.alunos_matricula_trancada,
                            a.alunos_desvinculados, a.alunos_transferidos, a.concluintes_total,
                            a.alunos_falecidos, a.ingressantes_total, a.matriculas_total,
-                           v.vagas_totais, v.vagas_novas_integral, v.vagas_novas_matutino,
-                           v.vagas_novas_vespertino, v.vagas_novas_noturno, v.vagas_novas_ead,
-                           v.inscritos_total, d.docentes_total, d.docentes_doutores,
-                           d.docentes_tempo_integral) AS flag_valor_negativo,
+                           d.docentes_total, d.docentes_doutores, d.docentes_tempo_integral)
+           AS flag_valor_negativo,
        silver.grupo_pequeno(a.vinculos_total, a.alunos_falecidos) AS flag_grupo_pequeno
 FROM chaves AS k
-LEFT JOIN alunos AS a USING (ano, co_ies, co_curso)
-LEFT JOIN vagas AS v USING (ano, co_ies, co_curso)
-LEFT JOIN docentes AS d USING (ano, co_ies, co_curso);
-ALTER TABLE silver.evasao_curso ADD PRIMARY KEY (ano, co_ies, co_curso);
+LEFT JOIN alunos AS a USING (ano, co_curso)
+LEFT JOIN docentes AS d USING (ano, co_curso);
+ALTER TABLE silver.evasao_curso ADD PRIMARY KEY (ano, co_curso);
 
 CREATE TABLE silver.evasao_coorte AS
 SELECT c.*,
@@ -280,7 +248,6 @@ SELECT c.*,
        silver.grupo_pequeno(c.vinculos_total, c.alunos_falecidos) AS flag_grupo_pequeno
 FROM (
     SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
            silver.codigo(linha->>'co_curso') AS co_curso,
            silver.codigo(linha->>'nu_ano_ingresso')::int AS ano_ingresso,
            (linha->>'vinculos_total')::numeric AS vinculos_total,
@@ -295,9 +262,8 @@ FROM (
     WHERE consulta = 'alunos_coorte'
 ) AS c;
 ALTER TABLE silver.evasao_coorte
-    ALTER COLUMN co_ies SET NOT NULL,
     ALTER COLUMN co_curso SET NOT NULL,
-    ADD UNIQUE NULLS NOT DISTINCT (ano, co_ies, co_curso, ano_ingresso);
+    ADD UNIQUE NULLS NOT DISTINCT (ano, co_curso, ano_ingresso);
 
 -- A categoria nula é mantida.
 CREATE TABLE silver.evasao_perfil AS
@@ -308,7 +274,6 @@ SELECT p.*,
        silver.grupo_pequeno(p.vinculos_total, p.alunos_falecidos) AS flag_grupo_pequeno
 FROM (
     SELECT s.ano,
-           silver.codigo(s.linha->>'co_ies') AS co_ies,
            silver.codigo(s.linha->>'co_curso') AS co_curso,
            s.variavel,
            f.fator,
@@ -325,57 +290,27 @@ FROM (
     WHERE s.fato = 'evasao_perfil'
 ) AS p;
 ALTER TABLE silver.evasao_perfil
-    ALTER COLUMN co_ies SET NOT NULL,
     ALTER COLUMN co_curso SET NOT NULL,
     ALTER COLUMN variavel SET NOT NULL,
-    ADD UNIQUE NULLS NOT DISTINCT (ano, co_ies, co_curso, variavel, codigo_categoria);
+    ADD UNIQUE NULLS NOT DISTINCT (ano, co_curso, variavel, codigo_categoria);
 
+-- Docentes da instituição (ver silver.instituicao), uma linha por ano
 CREATE TABLE silver.contexto_ies AS
-WITH ies AS (
+SELECT d.*,
+       silver.tem_negativo(d.docentes_total, d.docentes_doutores, d.docentes_tempo_integral)
+           AS flag_valor_negativo
+FROM (
     SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
-           silver.codigo(linha->>'tp_referente') AS tp_referente,
-           (linha->>'tecnicos_total')::numeric AS tecnicos_total,
-           (linha->>'receita_propria')::numeric AS receita_propria,
-           (linha->>'receita_transferencia')::numeric AS receita_transferencia,
-           (linha->>'receita_outra')::numeric AS receita_outra,
-           (linha->>'despesa_pessoal_docente')::numeric AS despesa_pessoal_docente,
-           (linha->>'despesa_pessoal_tecnico')::numeric AS despesa_pessoal_tecnico,
-           (linha->>'despesa_pessoal_encargo')::numeric AS despesa_pessoal_encargo,
-           (linha->>'despesa_custeio')::numeric AS despesa_custeio,
-           (linha->>'despesa_investimento')::numeric AS despesa_investimento,
-           (linha->>'despesa_pesquisa')::numeric AS despesa_pesquisa,
-           (linha->>'despesa_outra')::numeric AS despesa_outra
-    FROM silver.linha_sedap
-    WHERE consulta = 'ies'
-),
-docentes AS (
-    SELECT ano,
-           silver.codigo(linha->>'co_ies') AS co_ies,
+           silver.codigo(linha->>'co_mantenedora') AS co_mantenedora,
+           silver.codigo(linha->>'tp_categoria_administrativa') AS tp_categoria_administrativa,
+           silver.codigo(linha->>'tp_organizacao_academica') AS tp_organizacao_academica,
+           silver.codigo(linha->>'co_municipio_ies') AS co_municipio_ies,
            (linha->>'docentes_total')::numeric AS docentes_total,
            (linha->>'docentes_doutores')::numeric AS docentes_doutores,
            (linha->>'docentes_tempo_integral')::numeric AS docentes_tempo_integral
     FROM silver.linha_sedap
     WHERE consulta = 'docentes_ies'
-),
-chaves AS (
-    SELECT ano, co_ies FROM ies
-    UNION SELECT ano, co_ies FROM docentes
-)
-SELECT k.ano, k.co_ies,
-       CASE WHEN i.co_ies IS NOT NULL
-            THEN silver.decodificar('SUP_IES', 'TP_REFERENTE', i.tp_referente) END AS referencia_financeira,
-       i.tecnicos_total, i.receita_propria, i.receita_transferencia, i.receita_outra,
-       silver.soma_partes(i.despesa_pessoal_docente, i.despesa_pessoal_tecnico,
-                          i.despesa_pessoal_encargo) AS despesa_pessoal,
-       i.despesa_custeio, i.despesa_investimento, i.despesa_pesquisa, i.despesa_outra,
-       d.docentes_total, d.docentes_doutores, d.docentes_tempo_integral,
-       silver.tem_negativo(i.tecnicos_total, i.receita_propria, i.receita_transferencia, i.receita_outra,
-                           i.despesa_pessoal_docente, i.despesa_pessoal_tecnico, i.despesa_pessoal_encargo,
-                           i.despesa_custeio, i.despesa_investimento, i.despesa_pesquisa, i.despesa_outra,
-                           d.docentes_total, d.docentes_doutores, d.docentes_tempo_integral)
-           AS flag_valor_negativo
-FROM chaves AS k
-LEFT JOIN ies AS i USING (ano, co_ies)
-LEFT JOIN docentes AS d USING (ano, co_ies);
-ALTER TABLE silver.contexto_ies ADD PRIMARY KEY (ano, co_ies);
+) AS d;
+ALTER TABLE silver.contexto_ies
+    ADD UNIQUE NULLS NOT DISTINCT (ano, co_mantenedora, tp_categoria_administrativa, tp_organizacao_academica,
+                                   co_municipio_ies);

@@ -1,6 +1,6 @@
 # Pipeline-TCC-2
 
-Pipeline para o Trabalho de Conclusão de Curso II, referente ao titulo de "Desenvolvimento de uma Arquitetura de Dados em Nuvem para Apoio à Análise da Evasão no Ensino Superior Público em Mato Grosso". 
+Pipeline para o Trabalho de Conclusão de Curso II, referente ao título de "Desenvolvimento de uma Arquitetura de Dados em Nuvem para Apoio à Análise da Evasão no Ensino Superior Público em Mato Grosso".
 O projeto envia consultas agregadas ao SEDAP+ e grava as respostas na camada **bronze**. No Postgres, padroniza tudo na **silver** e monta a **gold**, um modelo dimensional para a análise da evasão.
 
 ## Estrutura
@@ -25,10 +25,10 @@ Pipeline-TCC-2/
 | Camada | Onde fica | O que tem |
 |---|---|---|
 | bronze | `dados/bronze/sedap/<ano>/*.json` e schema `bronze` | cada resposta do SEDAP+ como veio, com o SQL, a data e hora e o ano. As referências também ficam como vieram. |
-| silver | schema `silver` | códigos como texto, anos unidos, códigos decodificados, consultas juntas por curso e IES, nomes do IBGE e da CINE Brasil, e marcas de grupo pequeno e de valor negativo |
+| silver | schema `silver` | códigos como texto, anos unidos, códigos decodificados, consultas juntas por curso ou por instituição, nomes do IBGE e da CINE Brasil, e marcas de grupo pequeno e de valor negativo |
 | gold | schema `gold` | as 7 dimensões e as 4 fatos do modelo aprovado. As taxas são calculadas na visualização. |
 
-O pipeline nunca altera os arquivos da bronze. A silver e a gold são reconstruídas a cada `transformar`, numa única transação: se algo falhar, o banco fica como estava. O ruído do SEDAP+ (valor negativo ou não inteiro) fica como veio, com a marca.
+O pipeline nunca altera os arquivos da bronze. A silver e a gold são reconstruídas a cada `transformar`, numa única transação: se algo falhar, o banco fica como estava. O ruído do SEDAP+ (valor negativo ou não inteiro) fica como veio; valores negativos e grupos pequenos ficam marcados.
 
 ## Preparar (uma vez)
 
@@ -41,7 +41,7 @@ O pipeline nunca altera os arquivos da bronze. A silver e a gold são reconstru�
    ```
 2. Crie um arquivo `.env` nesta pasta, com uma linha `CHAVE=valor` para cada variável. Se a senha tiver `$`, coloque-a entre aspas simples.
    - Obrigatórias: `SEDAP_API_URL`, `SEDAP_TOKEN`, `SEDAP_PROFILE_ID`, `POSTGRES_DB`, `POSTGRES_USER` e `POSTGRES_PASSWORD`.
-   - Opcionais: `SEDAP_TABELA` (padrão `raw.{tabela}_{ano}_SEDAP`), `SEDAP_TIMEOUT_SEGUNDOS` (padrão 300), `SEDAP_PAUSA_SEGUNDOS` (padrão 2), `POSTGRES_HOST` (padrão `localhost`) e `POSTGRES_PORT` (padrão 5432).
+   - Opcionais: `SEDAP_TABELA` (padrão `raw.{tabela}_{ano}`), `SEDAP_TIMEOUT_SEGUNDOS` (padrão 300), `SEDAP_PAUSA_SEGUNDOS` (padrão 2), `POSTGRES_HOST` (padrão `localhost`) e `POSTGRES_PORT` (padrão 5432).
 3. Suba o Postgres:
    ```powershell
    docker compose --env-file .env -f infra/docker-compose.yml up -d
@@ -51,14 +51,15 @@ O pipeline nunca altera os arquivos da bronze. A silver e a gold são reconstru�
    - IBGE: `python -m pipeline ibge`. Baixa a lista de municípios, com meso e microrregião, da API de localidades do IBGE.
    - CINE Brasil: salve a tabela do INEP como `referencias/cine_brasil.csv`. Use as colunas da aba `AUX_CINE_BRASIL` do catálogo do INEP/SEDAP: `CO_CINE_ROTULO`, `NO_CINE_ROTULO`, `CO_CINE_AREA_GERAL`, `NO_CINE_AREA_GERAL`, `CO_CINE_AREA_ESPECIFICA`, `NO_CINE_AREA_ESPECIFICA`, `CO_CINE_AREA_DETALHADA` e `NO_CINE_AREA_DETALHADA`. Mantenha os códigos como texto, com os zeros à esquerda.
 
-   Sem esses dois arquivos, o pipeline roda, mas os nomes de município, meso e microrregião e área ficam vazios.
+   Sem esses dois arquivos, o pipeline roda, mas município, UF, região, meso e microrregião e as áreas da CINE ficam vazios.
 
 ## Rodar
 
 | Comando | O que faz |
 |---|---|
-| `python -m pipeline consultas` | grava o SQL das 265 consultas em `dados/consultas/`, para revisão. Não chama a API. |
-| `python -m pipeline extrair --prioridade 1` | envia ao SEDAP+ as 90 consultas de prioridade 1 |
+| `python -m pipeline consultas` | grava o SQL das 255 consultas em `dados/consultas/`, para revisão. Não chama a API. |
+| `python -m pipeline extrair` | envia ao SEDAP+ as 255 consultas, das prioridades 1 e 2 |
+| `python -m pipeline extrair --prioridade 1` | envia ao SEDAP+ as 80 consultas de prioridade 1 |
 | `python -m pipeline extrair --ano 2023 --consulta alunos_curso` | envia só as consultas escolhidas |
 | `python -m pipeline transformar` | carrega a bronze no Postgres e reconstrói a silver e a gold |
 

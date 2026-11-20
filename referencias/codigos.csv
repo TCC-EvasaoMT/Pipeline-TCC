@@ -10,9 +10,6 @@ SUP_IES;TP_ORGANIZACAO_ACADEMICA;2;Centro universitário
 SUP_IES;TP_ORGANIZACAO_ACADEMICA;3;Faculdade
 SUP_IES;TP_ORGANIZACAO_ACADEMICA;4;Instituto federal de educação, ciência e tecnologia
 SUP_IES;TP_ORGANIZACAO_ACADEMICA;5;Centro federal de educação tecnológica
-SUP_IES;TP_REFERENTE;1;Mantenedora
-SUP_IES;TP_REFERENTE;2;Instituição
-SUP_IES;TP_REFERENTE;;Sem informação
 SUP_CURSO;TP_SITUACAO;1;Em atividade
 SUP_CURSO;TP_SITUACAO;2;Extinto
 SUP_CURSO;TP_SITUACAO;3;Em extinção

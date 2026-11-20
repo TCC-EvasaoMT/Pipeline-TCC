@@ -1,6 +1,5 @@
--- Gold: reconstruída a cada execução a partir da silver.
--- O membro 0 ("Não informado") recebe o que não tem correspondência, para nada ser descartado.
--- As medidas ficam com o ruído como veio; as taxas são calculadas na visualização.
+-- Gold reconstruída a cada execução a partir da silver
+-- O membro 0 ("Não informado") recebe o que não tem correspondência, para nada ser descartado
 
 DROP SCHEMA IF EXISTS gold CASCADE;
 CREATE SCHEMA gold;
@@ -22,34 +21,33 @@ FROM (
 ) AS anos
 WHERE ano IS NOT NULL;
 
+-- O SEDAP+ não deixa identificar a IES. A instituição é a
+-- combinação de mantenedora, categoria administrativa, organização acadêmica e município da sede;
+-- IES iguais nesses quatro atributos viram um membro só.
+DROP TABLE IF EXISTS pg_temp.chave_instituicao;
+CREATE TEMPORARY TABLE chave_instituicao AS
+SELECT row_number() OVER (ORDER BY co_mantenedora, tp_categoria_administrativa, tp_organizacao_academica,
+                                   co_municipio_ies) AS id_instituicao, *
+FROM silver.instituicao;
+
 CREATE TABLE gold.dim_instituicao (
     id_instituicao            integer PRIMARY KEY,
-    codigo_ies                text UNIQUE,
-    nome_instituicao          text,
-    sigla_instituicao         text,
     codigo_mantenedora        text,
     categoria_administrativa  text,
     organizacao_academica     text,
+    codigo_municipio_sede     text,
     municipio_sede            text,
     uf_sede                   text,
     regiao_sede               text,
     mesorregiao_sede          text,
     microrregiao_sede         text
 );
-INSERT INTO gold.dim_instituicao (id_instituicao, nome_instituicao) VALUES (0, 'Não informado');
--- Atributos do ano mais recente.
+INSERT INTO gold.dim_instituicao (id_instituicao, categoria_administrativa, organizacao_academica)
+VALUES (0, 'Não informado', 'Não informado');
 INSERT INTO gold.dim_instituicao
-SELECT row_number() OVER (ORDER BY k.co_ies), k.co_ies, i.no_ies, i.sg_ies, i.co_mantenedora,
-       i.categoria_administrativa, i.organizacao_academica, i.municipio_sede, i.uf_sede,
-       i.regiao_sede, i.mesorregiao_sede, i.microrregiao_sede
-FROM (
-    SELECT co_ies FROM silver.evasao_curso
-    UNION SELECT co_ies FROM silver.evasao_coorte
-    UNION SELECT co_ies FROM silver.evasao_perfil
-    UNION SELECT co_ies FROM silver.contexto_ies
-) AS k
-LEFT JOIN (SELECT DISTINCT ON (co_ies) * FROM silver.ies_ano ORDER BY co_ies, ano DESC) AS i
-    ON i.co_ies = k.co_ies;
+SELECT id_instituicao, co_mantenedora, categoria_administrativa, organizacao_academica, co_municipio_ies,
+       municipio_sede, uf_sede, regiao_sede, mesorregiao_sede, microrregiao_sede
+FROM chave_instituicao;
 
 CREATE TABLE gold.dim_curso (
     id_curso                   integer PRIMARY KEY,
@@ -143,8 +141,7 @@ FROM (
 ) AS o
 WHERE num_nonnulls(modalidade_ensino, turno, eh_gratuito, possui_parte_ead, percentual_carga_horaria_ead) > 0;
 
--- Código fora do catálogo vira uma categoria do próprio fator,
--- para as categorias continuarem somando o total.
+-- Código fora do catálogo vira uma categoria do próprio fator, para as categorias continuarem somando o total.
 CREATE TABLE gold.dim_perfil (
     id_perfil         integer PRIMARY KEY,
     grupo_fator       text,
@@ -179,7 +176,7 @@ FROM (
 -- As três fatos de alunos usam as mesmas chaves.
 DROP TABLE IF EXISTS pg_temp.chave_curso;
 CREATE TEMPORARY TABLE chave_curso AS
-SELECT k.ano, k.co_ies, k.co_curso,
+SELECT k.ano, k.co_curso,
        coalesce(t.id_tempo, 0) AS id_tempo,
        coalesce(i.id_instituicao, 0) AS id_instituicao,
        coalesce(c.id_curso, 0) AS id_curso,
@@ -187,14 +184,19 @@ SELECT k.ano, k.co_ies, k.co_curso,
        coalesce(l.id_localidade, 0) AS id_localidade,
        coalesce(o.id_oferta, 0) AS id_oferta
 FROM (
-    SELECT ano, co_ies, co_curso FROM silver.evasao_curso
-    UNION SELECT ano, co_ies, co_curso FROM silver.evasao_coorte
-    UNION SELECT ano, co_ies, co_curso FROM silver.evasao_perfil
+    SELECT ano, co_curso FROM silver.evasao_curso
+    UNION SELECT ano, co_curso FROM silver.evasao_coorte
+    UNION SELECT ano, co_curso FROM silver.evasao_perfil
 ) AS k
 LEFT JOIN gold.dim_tempo AS t ON t.ano_censo = k.ano
-LEFT JOIN gold.dim_instituicao AS i ON i.codigo_ies = k.co_ies
 LEFT JOIN gold.dim_curso AS c ON c.codigo_curso = k.co_curso
 LEFT JOIN silver.curso_ano AS ca ON ca.ano = k.ano AND ca.co_curso = k.co_curso
+-- Curso sem atributos no ano (ex.: só nos docentes) fica com o membro 0.
+LEFT JOIN chave_instituicao AS i
+    ON ca.co_curso IS NOT NULL
+   AND (i.co_mantenedora, i.tp_categoria_administrativa, i.tp_organizacao_academica, i.co_municipio_ies)
+       IS NOT DISTINCT FROM
+       (ca.co_mantenedora, ca.tp_categoria_administrativa, ca.tp_organizacao_academica, ca.co_municipio_ies)
 LEFT JOIN gold.dim_area_conhecimento AS a ON a.codigo_rotulo_cine = ca.co_cine_rotulo
 LEFT JOIN gold.dim_localidade AS l ON l.codigo_municipio = ca.co_municipio_curso
 LEFT JOIN gold.dim_oferta AS o
@@ -210,7 +212,6 @@ CREATE TABLE gold.fato_evasao_curso (
     id_area_conhecimento       integer NOT NULL REFERENCES gold.dim_area_conhecimento,
     id_localidade              integer NOT NULL REFERENCES gold.dim_localidade,
     id_oferta                  integer NOT NULL REFERENCES gold.dim_oferta,
-    codigo_ies                 text NOT NULL,
     codigo_curso               text NOT NULL,
     vinculos_total             numeric,
     alunos_cursando            numeric,
@@ -221,9 +222,6 @@ CREATE TABLE gold.fato_evasao_curso (
     alunos_falecidos           numeric,
     ingressantes_total         numeric,
     matriculas_total           numeric,
-    vagas_totais               numeric,
-    vagas_novas                numeric,
-    inscritos_total            numeric,
     docentes_total             numeric,
     docentes_doutores          numeric,
     docentes_tempo_integral    numeric,
@@ -233,14 +231,14 @@ CREATE TABLE gold.fato_evasao_curso (
 );
 INSERT INTO gold.fato_evasao_curso
 SELECT k.id_tempo, k.id_instituicao, k.id_curso, k.id_area_conhecimento, k.id_localidade, k.id_oferta,
-       f.co_ies, f.co_curso,
+       f.co_curso,
        f.vinculos_total, f.alunos_cursando, f.alunos_matricula_trancada, f.alunos_desvinculados,
        f.alunos_transferidos, f.concluintes_total, f.alunos_falecidos,
-       f.ingressantes_total, f.matriculas_total, f.vagas_totais, f.vagas_novas, f.inscritos_total,
+       f.ingressantes_total, f.matriculas_total,
        f.docentes_total, f.docentes_doutores, f.docentes_tempo_integral,
        f.flag_valor_negativo, f.flag_grupo_pequeno
 FROM silver.evasao_curso AS f
-JOIN chave_curso AS k USING (ano, co_ies, co_curso);
+JOIN chave_curso AS k USING (ano, co_curso);
 
 CREATE TABLE gold.fato_evasao_coorte (
     id_tempo                   integer NOT NULL REFERENCES gold.dim_tempo,
@@ -250,7 +248,6 @@ CREATE TABLE gold.fato_evasao_coorte (
     id_area_conhecimento       integer NOT NULL REFERENCES gold.dim_area_conhecimento,
     id_localidade              integer NOT NULL REFERENCES gold.dim_localidade,
     id_oferta                  integer NOT NULL REFERENCES gold.dim_oferta,
-    codigo_ies                 text NOT NULL,
     codigo_curso               text NOT NULL,
     vinculos_total             numeric,
     alunos_cursando            numeric,
@@ -266,12 +263,12 @@ CREATE TABLE gold.fato_evasao_coorte (
 );
 INSERT INTO gold.fato_evasao_coorte
 SELECT k.id_tempo, coalesce(ti.id_tempo, 0), k.id_instituicao, k.id_curso, k.id_area_conhecimento,
-       k.id_localidade, k.id_oferta, f.co_ies, f.co_curso,
+       k.id_localidade, k.id_oferta, f.co_curso,
        f.vinculos_total, f.alunos_cursando, f.alunos_matricula_trancada, f.alunos_desvinculados,
        f.alunos_transferidos, f.concluintes_total, f.alunos_falecidos, f.ingressantes_total,
        f.flag_valor_negativo, f.flag_grupo_pequeno
 FROM silver.evasao_coorte AS f
-JOIN chave_curso AS k USING (ano, co_ies, co_curso)
+JOIN chave_curso AS k USING (ano, co_curso)
 LEFT JOIN gold.dim_tempo AS ti ON ti.ano_censo = f.ano_ingresso;
 
 -- Cada análise deve filtrar um único fator.
@@ -283,7 +280,6 @@ CREATE TABLE gold.fato_evasao_perfil (
     id_localidade              integer NOT NULL REFERENCES gold.dim_localidade,
     id_oferta                  integer NOT NULL REFERENCES gold.dim_oferta,
     id_perfil                  integer NOT NULL REFERENCES gold.dim_perfil,
-    codigo_ies                 text NOT NULL,
     codigo_curso               text NOT NULL,
     vinculos_total             numeric,
     alunos_cursando            numeric,
@@ -298,29 +294,19 @@ CREATE TABLE gold.fato_evasao_perfil (
 );
 INSERT INTO gold.fato_evasao_perfil
 SELECT k.id_tempo, k.id_instituicao, k.id_curso, k.id_area_conhecimento, k.id_localidade, k.id_oferta,
-       coalesce(p.id_perfil, 0), f.co_ies, f.co_curso,
+       coalesce(p.id_perfil, 0), f.co_curso,
        f.vinculos_total, f.alunos_cursando, f.alunos_matricula_trancada, f.alunos_desvinculados,
        f.alunos_transferidos, f.concluintes_total, f.alunos_falecidos,
        f.flag_valor_negativo, f.flag_grupo_pequeno
 FROM silver.evasao_perfil AS f
-JOIN chave_curso AS k USING (ano, co_ies, co_curso)
+JOIN chave_curso AS k USING (ano, co_curso)
 LEFT JOIN gold.dim_perfil AS p
     ON p.id_perfil <> 0 AND p.fator = f.fator AND p.codigo_categoria IS NOT DISTINCT FROM f.codigo_categoria;
 
+-- Instituições iguais nos quatro atributos vêm somadas pelo SEDAP+.
 CREATE TABLE gold.fato_contexto_ies (
     id_tempo                 integer NOT NULL REFERENCES gold.dim_tempo,
     id_instituicao           integer NOT NULL REFERENCES gold.dim_instituicao,
-    codigo_ies               text NOT NULL,
-    referencia_financeira    text,       -- dado financeiro da IES ou da mantenedora
-    tecnicos_total           numeric,
-    receita_propria          numeric,
-    receita_transferencia    numeric,
-    receita_outra            numeric,
-    despesa_pessoal          numeric,
-    despesa_custeio          numeric,
-    despesa_investimento     numeric,
-    despesa_pesquisa         numeric,
-    despesa_outra            numeric,
     docentes_total           numeric,
     docentes_doutores        numeric,
     docentes_tempo_integral  numeric,
@@ -328,13 +314,14 @@ CREATE TABLE gold.fato_contexto_ies (
     PRIMARY KEY (id_tempo, id_instituicao)
 );
 INSERT INTO gold.fato_contexto_ies
-SELECT coalesce(t.id_tempo, 0), coalesce(i.id_instituicao, 0), f.co_ies, f.referencia_financeira,
-       f.tecnicos_total, f.receita_propria, f.receita_transferencia, f.receita_outra,
-       f.despesa_pessoal, f.despesa_custeio, f.despesa_investimento, f.despesa_pesquisa, f.despesa_outra,
+SELECT coalesce(t.id_tempo, 0), coalesce(i.id_instituicao, 0),
        f.docentes_total, f.docentes_doutores, f.docentes_tempo_integral, f.flag_valor_negativo
 FROM silver.contexto_ies AS f
 LEFT JOIN gold.dim_tempo AS t ON t.ano_censo = f.ano
-LEFT JOIN gold.dim_instituicao AS i ON i.codigo_ies = f.co_ies;
+LEFT JOIN chave_instituicao AS i
+    ON (i.co_mantenedora, i.tp_categoria_administrativa, i.tp_organizacao_academica, i.co_municipio_ies)
+       IS NOT DISTINCT FROM
+       (f.co_mantenedora, f.tp_categoria_administrativa, f.tp_organizacao_academica, f.co_municipio_ies);
 
 -- Cada linha da silver tem que virar exatamente uma linha na fato.
 DO $$
