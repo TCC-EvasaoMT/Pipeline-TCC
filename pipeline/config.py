@@ -25,11 +25,9 @@ def carregar_env(caminho: Path = RAIZ / ".env") -> None:
 
 carregar_env()
 
-# Padrão dos exemplos do provedor; falta confirmar com ele o nome real das tabelas.
-TABELA_SEDAP = os.environ.get("SEDAP_TABELA") or "raw.{tabela}_{ano}_SEDAP"
+TABELA_SEDAP = os.environ.get("SEDAP_TABELA") or "raw.{tabela}_{ano}"
 TIMEOUT_SEGUNDOS = float(os.environ.get("SEDAP_TIMEOUT_SEGUNDOS") or 300)
 PAUSA_SEGUNDOS = float(os.environ.get("SEDAP_PAUSA_SEGUNDOS") or 2)
-
 
 def obrigatoria(nome: str) -> str:
     valor = os.environ.get(nome, "").strip()

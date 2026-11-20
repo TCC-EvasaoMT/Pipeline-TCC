@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS bronze.sedap_resultado (
     consulta        text NOT NULL,
     ano             integer NOT NULL,
     fato            text NOT NULL,
-    variavel        text,               -- fator de perfil, quando houver
+    variavel        text,
     prioridade      integer NOT NULL,
     sql             text NOT NULL,
     executado_em    timestamptz NOT NULL,
-    status          text NOT NULL,      -- ok | recusada | resposta_invalida
+    status          text NOT NULL,      -- ok, recusada ou resposta_invalida
     status_http     integer,
     resposta        jsonb,              -- corpo da resposta ({"rows": [...]})
     resposta_texto  text,               -- corpo, quando não veio em JSON

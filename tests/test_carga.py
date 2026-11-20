@@ -14,7 +14,7 @@ from psycopg.conninfo import make_conninfo
 
 from pipeline import carga, config, consultas, extracao
 
-# Sem esta variável, o teste da transformação completa é pulado (ver README).
+# Sem esta variável, o teste da transformação completa é pulado (ver README)
 CONNINFO = os.environ.get("PIPELINE_TESTE_POSTGRES")
 
 
@@ -56,7 +56,7 @@ class TestReferencias(unittest.TestCase):
         linhas = carga.ler_csv(config.PASTA_REFERENCIAS / "codigos.csv", carga.REFERENCIAS["codigos.csv"])
         variaveis = {(linha["tabela"], linha["variavel"]) for linha in linhas}
         for tabela, variavel in (("SUP_IES", "TP_CATEGORIA_ADMINISTRATIVA"), ("SUP_IES", "TP_ORGANIZACAO_ACADEMICA"),
-                                 ("SUP_IES", "TP_REFERENTE"), ("SUP_CURSO", "TP_SITUACAO"),
+                                 ("SUP_CURSO", "TP_SITUACAO"),
                                  ("SUP_CURSO", "TP_GRAU_ACADEMICO"), ("SUP_CURSO", "TP_NIVEL_ACADEMICO"),
                                  ("SUP_CURSO", "TP_MODALIDADE_ENSINO")):
             self.assertIn((tabela, variavel), variaveis)
@@ -100,24 +100,26 @@ class TestLeitura(unittest.TestCase):
             list(carga.ler_referencias(pasta))
 
 
-IES_A = {"NO_IES": "Universidade Sintética A", "SG_IES": "USA", "CO_MANTENEDORA": "9",
-         "TP_CATEGORIA_ADMINISTRATIVA": "1", "TP_ORGANIZACAO_ACADEMICA": "1",
+# Sem CO_IES, nome e sigla pois o SEDAP+ não deixa identificar a IES
+IES_A = {"CO_MANTENEDORA": "9", "TP_CATEGORIA_ADMINISTRATIVA": "1", "TP_ORGANIZACAO_ACADEMICA": "1",
          "CO_REGIAO_IES": "5", "CO_UF_IES": "51", "CO_MUNICIPIO_IES": "5103403"}
-IES_B = {"NO_IES": "Instituto Sintético B", "SG_IES": "ISB", "CO_MANTENEDORA": "8",
-         "TP_CATEGORIA_ADMINISTRATIVA": "2", "TP_ORGANIZACAO_ACADEMICA": "4",
+IES_B = {"CO_MANTENEDORA": "8", "TP_CATEGORIA_ADMINISTRATIVA": "2", "TP_ORGANIZACAO_ACADEMICA": "4",
          "CO_REGIAO_IES": "5", "CO_UF_IES": "51", "CO_MUNICIPIO_IES": "5101837"}
-# Curso presencial, de manhã e à noite, na capital.
+# Só aparece na consulta de docentes da IES.
+IES_C = {"CO_MANTENEDORA": "7", "TP_CATEGORIA_ADMINISTRATIVA": "3", "TP_ORGANIZACAO_ACADEMICA": "3",
+         "CO_REGIAO_IES": "5", "CO_UF_IES": "51", "CO_MUNICIPIO_IES": "5101837"}
+# Curso presencial, de manhã e à noite, na capital
 CURSO_A = {"NO_CURSO": "Curso Sintético A", "TP_SITUACAO_CURSO": "1", "CO_CINE_ROTULO": "0114E04",
            "TP_GRAU_ACADEMICO": "2", "TP_NIVEL_ACADEMICO": "1", "TP_MODALIDADE_ENSINO": "1", "IN_GRATUITO": 1,
            "NU_CARGA_HORARIA": 3200, "DT_INICIO_FUNCIONAMENTO": "1990-03-01", "CO_MUNICIPIO_CURSO": "5103403",
            "IN_CAPITAL_CURSO": 1.0, "IN_INTEGRAL": 0, "IN_MATUTINO": 1, "IN_VESPERTINO": 0, "IN_NOTURNO": 1,
            "NU_INTEGRALIZACAO_MATUTINO": 4, "NU_INTEGRALIZACAO_NOTURNO": 5, "IN_OFERECE_DISC_SEMI_PRES": 0}
-# Curso a distância: sem local nem turnos.
+# Curso a distância, sem local nem turnos
 CURSO_B = {"NO_CURSO": "Curso Sintético B", "TP_SITUACAO_CURSO": "1", "CO_CINE_ROTULO": "0413A01",
            "TP_GRAU_ACADEMICO": "3", "TP_NIVEL_ACADEMICO": "1", "TP_MODALIDADE_ENSINO": "2", "IN_GRATUITO": 1,
            "NU_CARGA_HORARIA": 1600, "DT_INICIO_FUNCIONAMENTO": "2015-08-01", "NU_INTEGRALIZACAO_EAD": 2.5,
            "IN_OFERECE_DISC_SEMI_PRES": 0}
-# Curso integral num município criado depois de 2017 (sem meso/microrregião no IBGE).
+# Curso integral num município criado depois de 2017 (sem meso/microrregião no IBGE)
 CURSO_C = {"NO_CURSO": "Curso Sintético C", "TP_SITUACAO_CURSO": "3", "CO_CINE_ROTULO": "0114E04",
            "TP_GRAU_ACADEMICO": "1", "TP_NIVEL_ACADEMICO": "1", "TP_MODALIDADE_ENSINO": "1", "IN_GRATUITO": 1,
            "NU_CARGA_HORARIA": 4000, "DT_INICIO_FUNCIONAMENTO": "2019-02-01", "CO_MUNICIPIO_CURSO": "5101837",
@@ -187,11 +189,11 @@ class TestTransformacao(unittest.TestCase):
 
     @classmethod
     def _gravar_bronze(cls):
-        a_2019 = {"NU_ANO": 2019, "CO_IES": "101", "CO_CURSO": "1001", **IES_A, **CURSO_A}
-        b_2019 = {"NU_ANO": 2019, "CO_IES": "101", "CO_CURSO": "1002", **IES_A, **CURSO_B}
-        # 2020: SUP_ALUNO devolve códigos numéricos (1001.0 deve virar '1001').
-        a_2020 = {"NU_ANO": 2020, "CO_IES": 101, "CO_CURSO": 1001.0, **IES_A, **CURSO_A}
-        b_2020 = {"NU_ANO": 2020, "CO_IES": 101, "CO_CURSO": 1002, **IES_A, **CURSO_B}
+        a_2019 = {"NU_ANO": 2019, "CO_CURSO": "1001", **IES_A, **CURSO_A}
+        b_2019 = {"NU_ANO": 2019, "CO_CURSO": "1002", **IES_A, **CURSO_B}
+        # 2020: SUP_ALUNO devolve códigos numéricos (1001.0 deve virar 1001)
+        a_2020 = {"NU_ANO": 2020, "CO_CURSO": 1001.0, **IES_A, **CURSO_A}
+        b_2020 = {"NU_ANO": 2020, "CO_CURSO": 1002, **IES_A, **CURSO_B}
         # Resposta antiga de 2019, substituída pela mais recente.
         cls._resultado("alunos_curso", 2019, [{**a_2019, **_situacao(999, 0, 0, 0, 0, 0, 0)}], minuto=0)
         cls._resultado("alunos_curso", 2019, [
@@ -203,6 +205,8 @@ class TestTransformacao(unittest.TestCase):
             {**a_2020, **_situacao(120.4, 70, 6, 25, 5, 15.1, -0.7), "ingressantes_total": 35,
              "matriculas_total": 85},
             {**b_2020, **_situacao(40, 30, 2, 5, 0, 3, 0), "ingressantes_total": 10, "matriculas_total": 33},
+            {"NU_ANO": 2020, "CO_CURSO": 2001, **IES_B, **CURSO_C, **_situacao(30, 25, 1, 3, 0, 1, 0),
+             "ingressantes_total": 8, "matriculas_total": 26},
         ])
         cls._resultado("alunos_coorte", 2020, [
             {**a_2020, "NU_ANO_INGRESSO": 2019, **_situacao(50, 40, 2, 6, 2, 0, 0), "ingressantes_total": 0},
@@ -226,28 +230,16 @@ class TestTransformacao(unittest.TestCase):
             {**b_2019, "CATEGORIA_PERFIL": None, **_situacao(1.3, 1, 0, 0, 0, 0.3, 0)},
         ])
         cls._resultado("perfil_tp_cor_raca", 2020, [], status=400)
-        cls._resultado("vagas_curso", 2020, [
-            {"NU_ANO": 2020, "CO_IES": "101", "CO_CURSO": "1001", **IES_A, **CURSO_A, "vagas_totais": 80,
-             "vagas_novas_matutino": 40, "vagas_novas_noturno": 40, "inscritos_total": 400},
-            {"NU_ANO": 2020, "CO_IES": "202", "CO_CURSO": "2001", **IES_B, **CURSO_C, "vagas_totais": 30,
-             "vagas_novas_integral": 30, "inscritos_total": 90},
-        ])
         cls._resultado("docentes_curso", 2020, [
-            {"NU_ANO": 2020, "CO_IES": "101", "CO_CURSO": "1001", "docentes_total": 30, "docentes_doutores": 20,
+            {"NU_ANO": 2020, "CO_CURSO": "1001", "docentes_total": 30, "docentes_doutores": 20,
              "docentes_tempo_integral": 25},
-            {"NU_ANO": 2020, "CO_IES": "202", "CO_CURSO": "3001", "docentes_total": 5, "docentes_doutores": 1,
+            {"NU_ANO": 2020, "CO_CURSO": "3001", "docentes_total": 5, "docentes_doutores": 1,
              "docentes_tempo_integral": -0.5},
         ])
-        cls._resultado("ies", 2020, [
-            {"NU_ANO": 2020, "CO_IES": "101", **IES_A, "TP_REFERENTE": "2", "tecnicos_total": 500,
-             "receita_propria": 1000000.0, "despesa_pessoal_docente": 1000.5, "despesa_pessoal_encargo": 200},
-            {"NU_ANO": 2020, "CO_IES": "202", **IES_B, "TP_REFERENTE": None, "tecnicos_total": 80},
-        ])
         cls._resultado("docentes_ies", 2020, [
-            {"NU_ANO": 2020, "CO_IES": "101", "docentes_total": 900, "docentes_doutores": 700,
+            {"NU_ANO": 2020, **IES_A, "docentes_total": 900, "docentes_doutores": 700,
              "docentes_tempo_integral": 850},
-            {"NU_ANO": 2020, "CO_IES": "303", "docentes_total": 15, "docentes_doutores": 2,
-             "docentes_tempo_integral": 10},
+            {"NU_ANO": 2020, **IES_C, "docentes_total": 15, "docentes_doutores": 2, "docentes_tempo_integral": -1},
         ])
 
     def consultar(self, comando):
@@ -258,25 +250,25 @@ class TestTransformacao(unittest.TestCase):
         self.assertEqual(self.resumo["fato_evasao_curso"], 6)
         self.assertEqual(self.resumo["fato_evasao_coorte"], 3)
         self.assertEqual(self.resumo["fato_evasao_perfil"], 10)
-        self.assertEqual(self.resumo["fato_contexto_ies"], 3)
-        self.assertEqual(self.resumo["dim_instituicao"], 4)   # 101, 202, 303 e o membro 0
+        self.assertEqual(self.resumo["fato_contexto_ies"], 2)
+        self.assertEqual(self.resumo["dim_instituicao"], 4)   # A, B, C e o membro 0
         self.assertEqual(self.resumo["dim_curso"], 5)         # 1001, 1002, 2001, 3001 e o membro 0
         self.assertEqual(self.resumo["dim_tempo"], 3)         # 2019, 2020 e o membro 0
 
     def test_bronze_guarda_todas_as_respostas(self):
         [(total, recusadas)] = self.consultar(
             "SELECT count(*), count(*) FILTER (WHERE status = 'recusada') FROM bronze.sedap_resultado")
-        self.assertEqual((total, recusadas), (12, 1))
+        self.assertEqual((total, recusadas), (10, 1))
 
     def test_valores_ficam_como_vieram_e_resposta_mais_recente_vale(self):
         linhas = dict(self.consultar(
             "SELECT t.ano_censo, f.vinculos_total FROM gold.fato_evasao_curso f "
             "JOIN gold.dim_tempo t USING (id_tempo) WHERE f.codigo_curso = '1001'"))
         self.assertEqual(linhas, {2019: Decimal("100.5"), 2020: Decimal("120.4")})
-        [(falecidos, negativo, vagas_novas)] = self.consultar(
-            "SELECT alunos_falecidos, flag_valor_negativo, vagas_novas FROM gold.fato_evasao_curso f "
+        [(falecidos, negativo)] = self.consultar(
+            "SELECT alunos_falecidos, flag_valor_negativo FROM gold.fato_evasao_curso f "
             "JOIN gold.dim_tempo t USING (id_tempo) WHERE f.codigo_curso = '1001' AND t.ano_censo = 2020")
-        self.assertEqual((falecidos, negativo, vagas_novas), (Decimal("-0.7"), True, Decimal("80")))
+        self.assertEqual((falecidos, negativo), (Decimal("-0.7"), True))
 
     def test_codigos_de_2019_e_2020_viram_o_mesmo_membro(self):
         [(cursos,)] = self.consultar("SELECT count(DISTINCT id_curso) FROM gold.fato_evasao_curso "
@@ -290,11 +282,15 @@ class TestTransformacao(unittest.TestCase):
         self.assertTrue(pequeno)
 
     def test_atributos_decodificados_e_nomes_das_referencias(self):
-        [ies] = self.consultar("SELECT nome_instituicao, categoria_administrativa, organizacao_academica, "
+        [ies] = self.consultar("SELECT categoria_administrativa, organizacao_academica, codigo_municipio_sede, "
                                "municipio_sede, uf_sede, regiao_sede, mesorregiao_sede "
-                               "FROM gold.dim_instituicao WHERE codigo_ies = '101'")
-        self.assertEqual(ies, ("Universidade Sintética A", "Pública federal", "Universidade",
+                               "FROM gold.dim_instituicao WHERE codigo_mantenedora = '9'")
+        self.assertEqual(ies, ("Pública federal", "Universidade", "5103403",
                                "Município Capital Sintético", "MT", "Centro-Oeste", "Meso Sintética"))
+        instituicoes = dict(self.consultar(
+            "SELECT DISTINCT f.codigo_curso, i.codigo_mantenedora FROM gold.fato_evasao_curso f "
+            "JOIN gold.dim_instituicao i USING (id_instituicao)"))
+        self.assertEqual(instituicoes, {"1001": "9", "1002": "9", "2001": "8", "3001": None})
         [curso] = self.consultar("SELECT nome_curso, grau_academico, situacao_curso, prazo_integralizacao_anos, "
                                  "ano_inicio_funcionamento FROM gold.dim_curso WHERE codigo_curso = '1001'")
         self.assertEqual(curso, ("Curso Sintético A", "Licenciatura", "Em atividade", Decimal("4"), 1990))
@@ -313,9 +309,9 @@ class TestTransformacao(unittest.TestCase):
                                   "3001": "Não informado"})
 
     def test_curso_sem_atributos_aponta_para_o_membro_0(self):
-        [chaves] = self.consultar("SELECT id_area_conhecimento, id_localidade, id_oferta, flag_valor_negativo "
-                                  "FROM gold.fato_evasao_curso WHERE codigo_curso = '3001'")
-        self.assertEqual(chaves, (0, 0, 0, True))
+        [chaves] = self.consultar("SELECT id_instituicao, id_area_conhecimento, id_localidade, id_oferta, "
+                                  "flag_valor_negativo FROM gold.fato_evasao_curso WHERE codigo_curso = '3001'")
+        self.assertEqual(chaves, (0, 0, 0, 0, True))
         [(ead,)] = self.consultar("SELECT DISTINCT id_localidade FROM gold.fato_evasao_curso "
                                   "WHERE codigo_curso = '1002'")
         self.assertEqual(ead, 0)
@@ -343,19 +339,17 @@ class TestTransformacao(unittest.TestCase):
         self.assertEqual(sem_perfil, 0)
 
     def test_contexto_da_ies(self):
-        linhas = {codigo: resto for codigo, *resto in self.consultar(
-            "SELECT codigo_ies, referencia_financeira, despesa_pessoal, docentes_total "
-            "FROM gold.fato_contexto_ies")}
-        self.assertEqual(linhas["101"], ["Instituição", Decimal("1200.5"), Decimal("900")])
-        self.assertEqual(linhas["202"], ["Sem informação", None, None])
-        self.assertEqual(linhas["303"], [None, None, Decimal("15")])
+        linhas = {mantenedora: resto for mantenedora, *resto in self.consultar(
+            "SELECT i.codigo_mantenedora, f.docentes_total, f.docentes_doutores, f.flag_valor_negativo "
+            "FROM gold.fato_contexto_ies f JOIN gold.dim_instituicao i USING (id_instituicao)")}
+        self.assertEqual(linhas, {"9": [Decimal("900"), Decimal("700"), False],
+                                  "7": [Decimal("15"), Decimal("2"), True]})
 
     def test_reexecutar_da_o_mesmo_resultado(self):
         self.assertEqual(carga.transformar(self.conninfo, self.bronze, self.referencias), self.resumo)
 
     def test_grao_repetido_para_a_carga_sem_mexer_no_banco(self):
-        repetida = {"NU_ANO": 2019, "CO_IES": "101", "CO_CURSO": "1001", **IES_A, **CURSO_A,
-                    **_situacao(1, 1, 0, 0, 0, 0, 0)}
+        repetida = {"NU_ANO": 2019, "CO_CURSO": "1001", **IES_A, **CURSO_A, **_situacao(1, 1, 0, 0, 0, 0, 0)}
         self._resultado("alunos_curso", 2019, [repetida, {**repetida, "NO_CURSO": "Outro nome"}], minuto=30)
         try:
             with self.assertRaises(psycopg.Error):

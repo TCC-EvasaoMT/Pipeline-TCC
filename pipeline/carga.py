@@ -13,12 +13,12 @@ from .extracao import problema_na_resposta
 
 log = logging.getLogger(__name__)
 
-# None = JSON de municípios do IBGE, os demais são CSV com estas colunas obrigatórias.
+# None = JSON de municípios do IBGE, os demais são CSV com estas colunas obrigatórias
 REFERENCIAS = {
     "codigos.csv": {"tabela", "variavel", "codigo", "descricao"},
     "fatores_perfil.csv": {"prioridade", "grupo_fator", "fator", "variavel", "codigo_categoria",
                            "categoria", "ordem_categoria", "variavel_origem"},
-    # Colunas da aba AUX_CINE_BRASIL do catálogo do INEP/SEDAP.
+    # Colunas da aba AUX_CINE_BRASIL do catálogo do INEP/SEDAP
     "cine_brasil.csv": {"CO_CINE_ROTULO", "NO_CINE_ROTULO", "CO_CINE_AREA_GERAL", "NO_CINE_AREA_GERAL",
                         "CO_CINE_AREA_ESPECIFICA", "NO_CINE_AREA_ESPECIFICA",
                         "CO_CINE_AREA_DETALHADA", "NO_CINE_AREA_DETALHADA"},
@@ -100,7 +100,7 @@ def _executar_sql(conexao, nome: str) -> None:
 def transformar(conninfo: str | None = None, pasta_bronze=None, pasta_referencias=None) -> dict:
     pasta_bronze = Path(pasta_bronze or config.PASTA_BRONZE)
     pasta_referencias = Path(pasta_referencias or config.PASTA_REFERENCIAS)
-    # Tudo numa transação: commit ao sair do bloco, rollback se algo falhar.
+    # Tudo numa transação: commit ao sair do bloco e rollback se algo falhar
     with conectar(conninfo) as conexao:
         _executar_sql(conexao, "bronze.sql")
         with conexao.cursor() as cursor:

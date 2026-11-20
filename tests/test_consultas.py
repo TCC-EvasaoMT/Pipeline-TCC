@@ -1,3 +1,4 @@
+import re
 import unittest
 from unittest import mock
 
@@ -18,8 +19,8 @@ class TestCatalogo(unittest.TestCase):
         cls.por_chave = {(c.nome, c.ano): c for c in cls.lista}
 
     def test_quantidade_por_prioridade(self):
-        # Por ano: 6 consultas fixas + 12 fatores de prioridade 1.
-        self.assertEqual(sum(c.prioridade == 1 for c in self.lista), 18 * len(config.ANOS))
+        # Por ano: 4 consultas fixas + 12 fatores de prioridade 1
+        self.assertEqual(sum(c.prioridade == 1 for c in self.lista), 16 * len(config.ANOS))
         self.assertEqual(sum(c.prioridade == 2 for c in self.lista), 35 * len(config.ANOS))
         self.assertEqual(len(self.por_chave), len(self.lista), "nome repetido no mesmo ano")
 
@@ -44,11 +45,47 @@ class TestCatalogo(unittest.TestCase):
                 self.assertEqual(nao_agregados, grupo)
                 self.assertEqual(len(itens), len(c.colunas))
 
+    def test_ies_so_entra_no_join(self):
+        # O SEDAP+ não deixa identificar a IES, o nome e a sigla a identificariam do mesmo jeito.
+        identificadores = re.compile(r"\b(CO_IES|NO_IES|SG_IES)\b")
+        for c in self.lista:
+            with self.subTest(consulta=c.nome, ano=c.ano):
+                itens, grupo = _partes(c.sql)
+                self.assertEqual([parte for parte in (*itens, *grupo) if identificadores.search(parte)], [])
+                self.assertIn("= i.CO_IES", c.sql)  # o filtro de MT continua pelo JOIN
+
+    def test_soma_so_de_inteiro(self):
+        # O SEDAP+ não soma NUMERIC, então toda soma de coluna tem CAST
+        for c in self.lista:
+            for soma in re.findall(r"SUM\((.+?)\) AS", c.sql):
+                with self.subTest(consulta=c.nome, soma=soma):
+                    self.assertTrue(soma.startswith("CASE WHEN")
+                                    or re.fullmatch(r"CAST\(\w+\.IN_\w+ AS INT64\)", soma), soma)
+        self.assertIn("SUM(CAST(a.IN_MATRICULA AS INT64)) AS matriculas_total",
+                      self.por_chave[("alunos_curso", 2021)].sql)
+
+    def test_sem_vagas_tecnicos_nem_financas(self):
+        # O SEDAP+ não libera esses dados (risco de reidentificação).
+        self.assertFalse({c.nome for c in self.lista} & {"vagas_curso", "ies"})
+        for c in self.lista:
+            with self.subTest(consulta=c.nome, ano=c.ano):
+                self.assertNotRegex(c.sql, r"QT_VAGA|QT_INSCRITO|QT_TEC|\bVL_|TP_REFERENTE")
+
     def test_colunas_do_resultado_sem_repeticao(self):
         for c in self.lista:
             with self.subTest(consulta=c.nome, ano=c.ano):
                 minusculas = [coluna.lower() for coluna in c.colunas]
                 self.assertEqual(len(minusculas), len(set(minusculas)))
+
+    def test_consultas_por_curso_so_da_graduacao(self):
+        # A SUP_DOCENTE_CURSO não tem o nível do curso, a docentes_curso o pega na SUP_CURSO.
+        graduacao = {"a.TP_NIVEL_ACADEMICO = '1'", "a.TP_NIVEL_ACADEMICO = 1", "c.TP_NIVEL_ACADEMICO = '1'"}
+        for c in self.lista:
+            if "CO_CURSO" in c.colunas:
+                with self.subTest(consulta=c.nome, ano=c.ano):
+                    filtros = c.sql.split("\nWHERE ", 1)[1].split("\nGROUP BY\n", 1)[0].split("\n  AND ")
+                    self.assertTrue(graduacao & set(filtros), filtros)
+        self.assertIn("ON dc.CO_CURSO = c.CO_CURSO", self.por_chave[("docentes_curso", 2021)].sql)
 
     def test_tipos_de_sup_aluno_mudam_em_2020(self):
         de_2019 = self.por_chave[("alunos_curso", 2019)].sql

@@ -18,12 +18,11 @@ STATUS_PARAR = {401, 403, 404, 405}  # credencial ou endereço errado: não adia
 LIMITE_ERRO = 2000
 URL_IBGE = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
 
-
 class ErroExtracao(Exception):
     pass
 
 
-# A mensagem cita só nomes de coluna, nunca valores: ela vai para a bronze e para os erros da carga.
+# A mensagem cita só nomes de coluna, nunca valores, ela vai para a bronze e para os erros da carga
 def problema_na_resposta(resposta, colunas) -> str | None:
     if not isinstance(resposta, dict) or not isinstance(resposta.get("rows"), list):
         return "resposta sem a lista 'rows'"
@@ -81,7 +80,7 @@ def registro(consulta, resposta, executado_em: datetime) -> dict:
         "resposta_texto": None,
         "erro": None,
     }
-    if resposta.status_code != 200:
+    if not 200 <= resposta.status_code < 300:  # o SEDAP+ responde 201 quando a consulta dá certo
         doc.update(status="recusada", erro=resposta.text[:LIMITE_ERRO])
         return doc
     try:
